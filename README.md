@@ -1,0 +1,2 @@
+# tango node eslint config
+
