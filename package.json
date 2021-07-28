@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config/issues"
   },
-  "homepage": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config#readme"
+  "homepage": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
+  }
 }
