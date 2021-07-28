@@ -1,0 +1,24 @@
+{
+  "name": "tango-node-eslint-config",
+  "version": "1.0.0",
+  "description": "ESLint guidelines package for NODE project by Tango.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/tango.io/guidelines/tango-node-eslint-config.git"
+  },
+  "keywords": [
+    "tango.io",
+    "eslint",
+    "node"
+  ],
+  "author": "gerardo.larios69@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config/issues"
+  },
+  "homepage": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config#readme"
+}
