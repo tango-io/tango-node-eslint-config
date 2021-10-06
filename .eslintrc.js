@@ -2,11 +2,11 @@ module.exports = {
 	'env': {
 		'commonjs': true,
 		'es2021': true,
-		'node': true
+		'node': true,
 	},
 	'extends': 'eslint:recommended',
 	'parserOptions': {
-		'ecmaVersion': 12
+		'ecmaVersion': 12,
 	},
 	'rules': {
 		// possible errors
@@ -81,7 +81,9 @@ module.exports = {
 		'no-iterator': 'error',
 		'no-lone-blocks': 'error',
 		'no-loop-func': 'error',
-		'no-magic-numbers': 'error',
+		'no-magic-numbers': ['error', {
+			'ignoreArrayIndexes': true,
+		}],
 		'no-multi-spaces': 'error',
 		'no-new': 'error',
 		'no-new-func': 'error',
@@ -108,10 +110,56 @@ module.exports = {
 		'no-shadow': 'error',
 		'no-unused-vars': 'error',
 		'no-use-before-define': 'error',
-		'max-len': ['error', { 'code': 100 }],
-		'indent': ['error', 'tab'],
+		// stylistic issues
+		'array-bracket-newline': ['error', 'never'],
+		'array-bracket-spacing': ['error',
+			'never',
+			{
+				'singleValue': false,
+				'objectsInArrays': false,
+				'arraysInArrays': false,
+			}],
+		'array-element-newline': ['error', 'consistent'],
+		'block-spacing': 'error',
+		'brace-style': 'error',
+		'camelcase': ['error', {
+			'ignoreDestructuring': true,
+			'ignoreImports': true,
+		}],
+		'comma-dangle': ['error', 'always-multiline'],
+		'comma-style': ['error', 'last'],
+		'computed-property-spacing': ['error', 'never'],
+		'func-call-spacing': ['error', 'never'],
+		'func-names': ['error', 'as-needed'],
+		'func-style': ['error', 'declaration', { 'allowArrowFunctions': true }],
+		'implicit-arrow-linebreak': ['error', 'beside'],
+		'jsx-quotes': ['error', 'prefer-double'],
+		'key-spacing': ['error', { 'mode': 'strict' }],
+		'lines-between-class-members': ['error', 'always'],
 		'linebreak-style': ['error', 'unix'],
+		'indent': ['error', 'tab'],
+		'max-depth': 'error',
+		'max-len': ['error', {
+			'code': 100,
+			'ignoreComments': true,
+		}],
+		'newline-per-chained-call': ['error', { 'ignoreChainWithDepth': 2 }],
+		'no-bitwise': 'error',
+		'no-lonely-if': 'error',
+		'no-mixed-spaces-and-tabs': 'error',
+		'no-multi-assign': 'error',
+		'no-multiple-empty-lines': 'error',
+		'no-negated-condition': 'error',
+		'no-nested-ternary': 'error',
+		'no-new-object': 'error',
+		'no-trailing-spaces': 'error',
+		'no-unneeded-ternary': 'error',
+		'no-whitespace-before-property': 'error',
+		'prefer-object-spread': 'error',
+		'object-curly-spacing': ['error', 'always'],
+		'operator-linebreak': ['error', 'before'],
+		'quote-props': ['error', 'consistent-as-needed'],
 		'quotes': ['error', 'single'],
-		'semi': ['error', 'never']
-	}
+		'semi': ['error', 'never'],
+	},
 }
