@@ -1,5 +1,5 @@
 {
-  "name": "tango-node-eslint-config",
+  "name": "eslint-config-tango-node",
   "version": "1.0.0",
   "description": "ESLint guidelines package for NODE project by Tango.io",
   "main": "index.js",

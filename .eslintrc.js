@@ -162,9 +162,9 @@ module.exports = {
 		'operator-linebreak': ['error', 'none'],
 		'padded-blocks': ['error', 'never'],
 		'padding-line-between-statements': ['error', {
-			blankLine: 'always',
-			prev: '*',
-			next: 'return',
+			'blankLine': 'always',
+			'prev': '*',
+			'next': 'return',
 		}],
 		'quotes': ['error', 'single'],
 		'semi': ['error', 'never'],
