@@ -15,7 +15,7 @@ module.exports = {
 		'no-await-in-loop': 'error',
 		'no-compare-neg-zero': 'error',
 		'no-cond-assign': 'error',
-		'no-console': 'error',
+		'no-console': ['error', { 'allow': [ 'warn',  'error'] }],
 		'no-constant-condition': 'error',
 		'no-debugger': 'error',
 		'no-dupe-args': 'error',
@@ -48,7 +48,6 @@ module.exports = {
 		'use-isnan': 'error',
 		'valid-typeof': 'error',
 		// best practices
-		'array-callback-return': 'error',
 		'block-scoped-var': 'error',
 		'complexity': ['error', 2],
 		'consistent-return': 'error',
