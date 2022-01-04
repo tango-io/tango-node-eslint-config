@@ -24,8 +24,8 @@ You'll see several dependencies were installed. Now, create (or update) a `.esli
 
 ```json
 {
-  'extends': [
-    'tango-node'
+  "extends": [
+    "tango-node"
   ]
 }
 ```
