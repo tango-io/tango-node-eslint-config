@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/tango.io/guidelines/tango-node-eslint-config.git"
+    "url": "git+ssh://git@github.com:tango-io/tango-node-eslint-config.git"
   },
   "keywords": [
     "tango.io",
@@ -18,9 +18,9 @@
   "author": "gerardo.larios69@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config/issues"
+    "url": "https://github.com/tango-io/tango-node-eslint-config/issues"
   },
-  "homepage": "https://gitlab.com/tango.io/guidelines/tango-node-eslint-config#readme",
+  "homepage": "https://github.com/tango-io/tango-node-eslint-config#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
