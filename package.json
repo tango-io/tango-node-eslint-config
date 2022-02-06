@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-tango-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint guidelines package for NODE project by Tango.io",
   "main": "index.js",
   "scripts": {
