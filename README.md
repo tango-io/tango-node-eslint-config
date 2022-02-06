@@ -16,7 +16,7 @@ Next, install eslint-plugin-json-files:
 npm i @tango-io/eslint-config-tango-node --save-dev
 ```
 
-*NOTE:* If you installed ESLint globally (using the -g flag) then you must also install eslint-plugin-json-files globally.
+_NOTE:_ If you installed ESLint globally (using the -g flag) then you must also install eslint-plugin-json-files globally.
 
 ## Usage
 
@@ -24,9 +24,7 @@ You'll see several dependencies were installed. Now, create (or update) a `.esli
 
 ```json
 {
-  "extends": [
-    "@tango-io/tango-node"
-  ]
+  'extends': ['@tango-io/tango-node']
 }
 ```
 
@@ -37,11 +35,11 @@ You'll see several dependencies were installed. Now, create (or update) a `.esli
 Examples of incorrect code for this rule:
 
 ```javascript
-for (var i = 0; i < 10; i--) { }
+for (var i = 0; i < 10; i--) {}
 
-for (var i = 10; i >= 0; i++) { }
+for (var i = 10; i >= 0; i++) {}
 
-for (var i = 0; i > 10; i++) { }
+for (var i = 0; i > 10; i++) {}
 ```
 
 Examples of correct code for this rule:
@@ -49,25 +47,26 @@ Examples of correct code for this rule:
 ```javascript
 for (var i = 0; i < 10; i++) {}
 ```
+
 ### getter-return
 
 Examples of incorrect code for this rule:
 
 ```javascript
 p = {
-  get name(){
+  get name() {
     // no returns.
-  }
+  },
 };
 
 Object.defineProperty(p, 'age', {
-  get: function (){
+  get: function () {
     // no returns.
-  }
+  },
 });
 
-class P{
-  get name(){
+class P {
+  get name() {
     // no returns.
   }
 }
@@ -257,19 +256,19 @@ Examples of correct code for this rule:
 
 ```javascript
 if (x === 0) {
-    doSomething();
+  doSomething();
 }
 
 for (;;) {
-    doSomethingForever();
+  doSomethingForever();
 }
 
 while (typeof x === 'undefined') {
-    doSomething();
+  doSomething();
 }
 
 do {
-    doSomething();
+  doSomething();
 } while (x);
 
 var result = x !== 0 ? a : b;
@@ -318,7 +317,6 @@ function foo(a, b, c) {
 var bar = function (a, b, c) {
   console.log(a, b, c);
 };
-
 ```
 
 ### no-dupe-else-if
@@ -361,33 +359,33 @@ Examples of correct code for this rule:
 
 ```javascript
 if (isSomething(x)) {
-    foo();
+  foo();
 } else if (isSomethingElse(x)) {
-    bar();
+  bar();
 }
 
 if (a) {
-    foo();
+  foo();
 } else if (b) {
-    bar();
+  bar();
 } else if (c && d) {
-    baz();
+  baz();
 } else if (c && e) {
-    quux();
+  quux();
 } else {
-    quuux();
+  quuux();
 }
 
 if (n === 1) {
-    foo();
+  foo();
 } else if (n === 2) {
-    bar();
+  bar();
 } else if (n === 3) {
-    baz();
+  baz();
 } else if (n === 4) {
-    quux();
+  quux();
 } else if (n === 5) {
-    quuux();
+  quuux();
 }
 ```
 
@@ -458,16 +456,19 @@ switch (a) {
 Examples of incorrect code for this rule:
 
 ```javascript
-if (foo) {}
+if (foo) {
+}
 
 while (foo) {}
 
-switch (foo) {}
+switch (foo) {
+}
 
 try {
   doSomething();
 } catch (ex) {
-} finally {}
+} finally {
+}
 ```
 
 Examples of correct code for this rule:
@@ -557,7 +558,7 @@ var foo = !!bar;
 var foo = Boolean(bar);
 
 function foo() {
-    return !!bar;
+  return !!bar;
 }
 
 var foo = bar ? !!baz : !!bat;
@@ -568,26 +569,26 @@ var foo = bar ? !!baz : !!bat;
 Examples of incorrect code for this rule:
 
 ```javascript
-a = (b * c);
+a = b * c;
 
-(a * b) + c;
+a * b + c;
 
 for (a in (b, c));
 
-for (a in (b));
+for (a in b);
 
-for (a of (b));
+for (a of b);
 
-typeof (a);
+typeof a;
 
-(function(){} ? a() : b());
+(function () {} ? a() : b());
 
 class A {
-  [(x)] = 1;
+  [x] = 1;
 }
 
 class B {
-  x = (y + z);
+  x = y + z;
 }
 ```
 
@@ -626,23 +627,23 @@ class B {
 Examples of incorrect code for this rule:
 
 ```javascript
-var x = 5;;
+var x = 5;
 
 function foo() {
   // code
-};
+}
 
 class C {
-  field;;
+  field;
 
   method() {
     // code
-  };
+  }
 
   static {
-      // code
-  };
-};
+    // code
+  }
+}
 ```
 
 Examples of correct code for this rule:
@@ -713,7 +714,6 @@ mod_ns.named = 3; // ERROR: The members of 'mod_ns' are readonly.
 mod_ns = {}; // ERROR: 'mod_ns' is readonly.
 // Can't extend 'mod_ns'
 Object.assign(mod_ns, { foo: 'foo' }); // ERROR: The members of 'mod_ns' are readonly.
-
 ```
 
 Examples of correct code for this rule:
@@ -731,7 +731,6 @@ function test(obj) {
   obj.named = 4; // Not errored because 'obj' is not namespace objects.
 }
 test(mod_ns); // Not errored because it doesn't know that 'test' updates the member of the argument.
-
 ```
 
 ### no-inner-declarations
@@ -855,24 +854,24 @@ function thing() {
 Examples of incorrect code for this rule:
 
 ```javascript
-const x = 9007199254740993
-const x = 5123000000000000000000000000001
-const x = 1230000000000000000000000.0
-const x = .1230000000000000000000000
-const x = 0X20000000000001
-const x = 0X2_000000000_0001;
+const x = 9007199254740993;
+const x = 5123000000000000000000000000001;
+const x = 1230000000000000000000000.0;
+const x = 0.123;
+const x = 0x20000000000001;
+const x = 0x2_000000000_0001;
 ```
 
 Examples of correct code for this rule:
 
 ```javascript
-const x = 12345
-const x = 123.456
-const x = 123e34
-const x = 12300000000000000000000000
-const x = 0x1FFFFFFFFFFFFF
-const x = 9007199254740991
-const x = 9007_1992547409_91
+const x = 12345;
+const x = 123.456;
+const x = 123e34;
+const x = 12300000000000000000000000;
+const x = 0x1fffffffffffff;
+const x = 9007199254740991;
+const x = 9007_1992547409_91;
 ```
 
 ### no-misleading-character-class
@@ -921,7 +920,7 @@ Examples of correct code for this rule:
 
 ```javascript
 function area(r) {
-    return Math.PI * r * r;
+  return Math.PI * r * r;
 }
 
 var object = JSON.parse('{}');
@@ -1111,21 +1110,16 @@ Object.defineProperty(foo, 'bar', {
 Examples of incorrect code for this rule:
 
 ```javascript
-var foo = bar
-(1 || 2).baz();
+var foo = bar(1 || 2).baz();
 
-var hello = 'world'
-[1, 2, 3].forEach(addNumber);
+var hello = 'world'[(1, 2, 3)].forEach(addNumber);
 
-let x = function() {}
-`hello`
+let x = (function () {})`hello`;
 
-let x = function() {}
-x
-`hello`
+let x = function () {};
+x`hello`;
 
-let x = foo
-/regex/g.test(bar)
+let x = foo / regex / g.test(bar);
 ```
 
 Examples of correct code for this rule:
@@ -1134,20 +1128,20 @@ Examples of correct code for this rule:
 var foo = bar;
 (1 || 2).baz();
 
-var foo = bar
-;(1 || 2).baz()
+var foo = bar;
+(1 || 2).baz();
 
 var hello = 'world';
 [1, 2, 3].forEach(addNumber);
 
-var hello = 'world'
+var hello = 'world';
 void [1, 2, 3].forEach(addNumber);
 
-let x = function() {};
-`hello`
+let x = function () {};
+`hello`;
 
-let tag = function() {}
-tag `hello`
+let tag = function () {};
+tag`hello`;
 ```
 
 ### no-unreachable
@@ -1157,21 +1151,21 @@ Examples of incorrect code for this rule:
 ```javascript
 function foo() {
   return true;
-  console.log("done");
+  console.log('done');
 }
 
 function bar() {
-  throw new Error("Oops!");
-  console.log("done");
+  throw new Error('Oops!');
+  console.log('done');
 }
 
 while (value) {
   break;
-  console.log("done");
+  console.log('done');
 }
 
-throw new Error("Oops!");
-console.log("done");
+throw new Error('Oops!');
+console.log('done');
 
 function baz() {
   if (Math.random() < 0.5) {
@@ -1179,11 +1173,11 @@ function baz() {
   } else {
     throw new Error();
   }
-  console.log("done");
+  console.log('done');
 }
 
 for (;;) {}
-console.log("done");
+console.log('done');
 ```
 
 Examples of correct code for this rule:
@@ -1235,13 +1229,13 @@ function findSomething(arr) {
     if (isSomething(arr[i])) {
       return arr[i];
     } else {
-      throw new Error("Doesn't exist.");
+      throw new Error('Doesn't exist.');
     }
   }
 }
 
 for (key in obj) {
-  if (key.startsWith("_")) {
+  if (key.startsWith('_')) {
     break;
   }
   firstKey = key;
@@ -1284,11 +1278,11 @@ function findSomething(arr) {
       return arr[i];
     }
   }
-  throw new Error("Doesn't exist.");
+  throw new Error('Doesn't exist.');
 }
 
 for (key in obj) {
-  if (key.startsWith("_")) {
+  if (key.startsWith('_')) {
     continue;
   }
   firstKey = key;
@@ -1329,7 +1323,7 @@ let foo = function () {
   } catch (err) {
     return 2;
   } finally {
-    console.log("hola!");
+    console.log('hola!');
   }
 };
 ```
@@ -1341,7 +1335,7 @@ Examples of incorrect code for this rule:
 ```javascript
 if (!key in object) {
   // operator precedence makes it equivalent to (!key) in object
-  // and type conversion makes it equivalent to (key ? "false" : "true") in object
+  // and type conversion makes it equivalent to (key ? 'false' : 'true') in object
 }
 
 if (!obj instanceof Ctor) {
@@ -1548,19 +1542,19 @@ if (!isNaN(foo)) {
 examples of incorrect code for this rule:
 
 ```javascript
-typeof foo === "strnig"
-typeof foo == "undefimed"
-typeof bar != "nunber"
-typeof bar !== "fucntion"
+typeof foo === 'strnig';
+typeof foo == 'undefimed';
+typeof bar != 'nunber';
+typeof bar !== 'fucntion';
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-typeof foo === "string"
-typeof bar == "undefined"
-typeof foo === baz
-typeof bar === typeof qux
+typeof foo === 'string';
+typeof bar == 'undefined';
+typeof foo === baz;
+typeof bar === typeof qux;
 ```
 
 ## Best Practices Rules
@@ -1570,99 +1564,99 @@ typeof bar === typeof qux
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint block-scoped-var: "error"*/
+/*eslint block-scoped-var: 'error'*/
 
 function doIf() {
-    if (true) {
-        var build = true;
-    }
+  if (true) {
+    var build = true;
+  }
 
-    console.log(build);
+  console.log(build);
 }
 
 function doIfElse() {
-    if (true) {
-        var build = true;
-    } else {
-        var build = false;
-    }
+  if (true) {
+    var build = true;
+  } else {
+    var build = false;
+  }
 }
 
 function doTryCatch() {
-    try {
-        var build = 1;
-    } catch (e) {
-        var f = build;
-    }
+  try {
+    var build = 1;
+  } catch (e) {
+    var f = build;
+  }
 }
 
 function doFor() {
-    for (var x = 1; x < 10; x++) {
-        var y = f(x);
-    }
-    console.log(y);
+  for (var x = 1; x < 10; x++) {
+    var y = f(x);
+  }
+  console.log(y);
 }
 
 class C {
-    static {
-        if (something) {
-            var build = true;
-        }
-        build = false;
+  static {
+    if (something) {
+      var build = true;
     }
+    build = false;
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint block-scoped-var: "error"*/
+/*eslint block-scoped-var: 'error'*/
 
 function doIf() {
-    var build;
+  var build;
 
-    if (true) {
-        build = true;
-    }
+  if (true) {
+    build = true;
+  }
 
-    console.log(build);
+  console.log(build);
 }
 
 function doIfElse() {
-    var build;
+  var build;
 
-    if (true) {
-        build = true;
-    } else {
-        build = false;
-    }
+  if (true) {
+    build = true;
+  } else {
+    build = false;
+  }
 }
 
 function doTryCatch() {
-    var build;
-    var f;
+  var build;
+  var f;
 
-    try {
-        build = 1;
-    } catch (e) {
-        f = build;
-    }
+  try {
+    build = 1;
+  } catch (e) {
+    f = build;
+  }
 }
 
 function doFor() {
-    for (var x = 1; x < 10; x++) {
-        var y = f(x);
-        console.log(y);
-    }
+  for (var x = 1; x < 10; x++) {
+    var y = f(x);
+    console.log(y);
+  }
 }
 
 class C {
-    static {
-        var build = false;
-        if (something) {
-            build = true;
-        }
+  static {
+    var build = false;
+    if (something) {
+      build = true;
     }
+  }
 }
 ```
 
@@ -1671,39 +1665,39 @@ class C {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint complexity: ["error", 2]*/
+/*eslint complexity: ['error', 2]*/
 
 function a(x) {
-    if (true) {
-        return x;
-    } else if (false) {
-        return x+1;
-    } else {
-        return 4; // 3rd path
-    }
+  if (true) {
+    return x;
+  } else if (false) {
+    return x + 1;
+  } else {
+    return 4; // 3rd path
+  }
 }
 
 function b() {
-    foo ||= 1;
-    bar &&= 1;
+  foo ||= 1;
+  bar &&= 1;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint complexity: ["error", 2]*/
+/*eslint complexity: ['error', 2]*/
 
 function a(x) {
-    if (true) {
-        return x;
-    } else {
-        return 4;
-    }
+  if (true) {
+    return x;
+  } else {
+    return 4;
+  }
 }
 
 function b() {
-    foo ||= 1;
+  foo ||= 1;
 }
 ```
 
@@ -1712,42 +1706,42 @@ function b() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint consistent-return: "error"*/
+/*eslint consistent-return: 'error'*/
 
 function doSomething(condition) {
-    if (condition) {
-        return true;
-    } else {
-        return;
-    }
+  if (condition) {
+    return true;
+  } else {
+    return;
+  }
 }
 
 function doSomething(condition) {
-    if (condition) {
-        return true;
-    }
+  if (condition) {
+    return true;
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint consistent-return: "error"*/
+/*eslint consistent-return: 'error'*/
 
 function doSomething(condition) {
-    if (condition) {
-        return true;
-    } else {
-        return false;
-    }
+  if (condition) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function Foo() {
-    if (!(this instanceof Foo)) {
-        return new Foo();
-    }
+  if (!(this instanceof Foo)) {
+    return new Foo();
+  }
 
-    this.a = 0;
+  this.a = 0;
 }
 ```
 
@@ -1756,35 +1750,34 @@ function Foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint curly: "error"*/
+/*eslint curly: 'error'*/
 
 if (foo) foo++;
 
-while (bar)
-    baz();
+while (bar) baz();
 
 if (foo) {
-    baz();
+  baz();
 } else qux();
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint curly: "error"*/
+/*eslint curly: 'error'*/
 
 if (foo) {
-    foo++;
+  foo++;
 }
 
 while (bar) {
-    baz();
+  baz();
 }
 
 if (foo) {
-    baz();
+  baz();
 } else {
-    qux();
+  qux();
 }
 ```
 
@@ -1793,46 +1786,44 @@ if (foo) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint default-case: "error"*/
+/*eslint default-case: 'error'*/
 
 switch (a) {
-    case 1:
-        /* code */
-        break;
+  case 1:
+    /* code */
+    break;
 }
-
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint default-case: "error"*/
+/*eslint default-case: 'error'*/
 
 switch (a) {
-    case 1:
-        /* code */
-        break;
+  case 1:
+    /* code */
+    break;
 
-    default:
-        /* code */
-        break;
-}
-
-
-switch (a) {
-    case 1:
-        /* code */
-        break;
-
-    // no default
+  default:
+    /* code */
+    break;
 }
 
 switch (a) {
-    case 1:
-        /* code */
-        break;
+  case 1:
+    /* code */
+    break;
 
-    // No Default
+  // no default
+}
+
+switch (a) {
+  case 1:
+    /* code */
+    break;
+
+  // No Default
 }
 ```
 
@@ -1841,45 +1832,45 @@ switch (a) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint default-case-last: "error"*/
+/*eslint default-case-last: 'error'*/
 
 switch (foo) {
-    default:
-        bar();
-        break;
-    case "a":
-        baz();
-        break;
+  default:
+    bar();
+    break;
+  case 'a':
+    baz();
+    break;
 }
 
 switch (foo) {
-    case 1:
-        bar();
-        break;
-    default:
-        baz();
-        break;
-    case 2:
-        quux();
-        break;
+  case 1:
+    bar();
+    break;
+  default:
+    baz();
+    break;
+  case 2:
+    quux();
+    break;
 }
 
 switch (foo) {
-    case "x":
-        bar();
-        break;
-    default:
-    case "y":
-        baz();
-        break;
+  case 'x':
+    bar();
+    break;
+  default:
+  case 'y':
+    baz();
+    break;
 }
 
 switch (foo) {
-    default:
-        break;
-    case -1:
-        bar();
-        break;
+  default:
+    break;
+  case -1:
+    bar();
+    break;
 }
 
 switch (foo) {
@@ -1893,47 +1884,47 @@ switch (foo) {
 examples of correct code for this rule:
 
 ```javascript
-/*eslint default-case-last: "error"*/
+/*eslint default-case-last: 'error'*/
 
 switch (foo) {
-    case "a":
-        baz();
-        break;
-    default:
-        bar();
-        break;
+  case 'a':
+    baz();
+    break;
+  default:
+    bar();
+    break;
 }
 
 switch (foo) {
-    case 1:
-        bar();
-        break;
-    case 2:
-        quux();
-        break;
-    default:
-        baz();
-        break;
+  case 1:
+    bar();
+    break;
+  case 2:
+    quux();
+    break;
+  default:
+    baz();
+    break;
 }
 
 switch (foo) {
-    case "x":
-        bar();
-        break;
-    case "y":
-    default:
-        baz();
-        break;
+  case 'x':
+    bar();
+    break;
+  case 'y':
+  default:
+    baz();
+    break;
 }
 
 switch (foo) {
-    case -1:
-        bar();
-        break;
+  case -1:
+    bar();
+    break;
 }
 
 if (foo !== 0) {
-    doSomethingIfNotZero();
+  doSomethingIfNotZero();
 }
 doSomethingAnyway();
 ```
@@ -1943,7 +1934,7 @@ doSomethingAnyway();
 examples of incorrect code for this rule:
 
 ```javascript
-/* eslint default-param-last: ["error"] */
+/* eslint default-param-last: ['error'] */
 
 function f(a = 0, b) {}
 
@@ -1953,7 +1944,7 @@ function f(a, b = 0, c) {}
 examples of correct code for this rule:
 
 ```javascript
-/* eslint default-param-last: ["error"] */
+/* eslint default-param-last: ['error'] */
 
 function f(a, b = 0) {}
 ```
@@ -1963,19 +1954,19 @@ function f(a, b = 0) {}
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint dot-notation: "error"*/
+/*eslint dot-notation: 'error'*/
 
-var x = foo["bar"];
+var x = foo['bar'];
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint dot-notation: "error"*/
+/*eslint dot-notation: 'error'*/
 
 var x = foo.bar;
 
-var x = foo[bar];    // Property name is a variable, square-bracket notation required
+var x = foo[bar]; // Property name is a variable, square-bracket notation required
 ```
 
 ### eqeqeq
@@ -1983,30 +1974,32 @@ var x = foo[bar];    // Property name is a variable, square-bracket notation req
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint eqeqeq: "error"*/
+/*eslint eqeqeq: 'error'*/
 
-if (x == 42) { }
+if (x == 42) {
+}
 
-if ("" == text) { }
+if ('' == text) {
+}
 
-if (obj.getStuff() != undefined) { }
+if (obj.getStuff() != undefined) {
+}
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint eqeqeq: ["error", "always"]*/
+/*eslint eqeqeq: ['error', 'always']*/
 
-a == b
-foo == true
-bananas != 1
-value == undefined
-typeof foo == 'undefined'
-'hello' != 'world'
-0 == 0
-true == true
-foo == null
-
+a == b;
+foo == true;
+bananas != 1;
+value == undefined;
+typeof foo == 'undefined';
+'hello' != 'world';
+0 == 0;
+true == true;
+foo == null;
 ```
 
 ### guard-for-in
@@ -2014,28 +2007,28 @@ foo == null
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint guard-for-in: "error"*/
+/*eslint guard-for-in: 'error'*/
 
 for (key in foo) {
-    doSomething(key);
+  doSomething(key);
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint guard-for-in: "error"*/
+/*eslint guard-for-in: 'error'*/
 
 for (key in foo) {
-    if (Object.prototype.hasOwnProperty.call(foo, key)) {
-        doSomething(key);
-    }
+  if (Object.prototype.hasOwnProperty.call(foo, key)) {
+    doSomething(key);
+  }
 }
 
 for (key in foo) {
-    if ({}.hasOwnProperty.call(foo, key)) {
-        doSomething(key);
-    }
+  if ({}.hasOwnProperty.call(foo, key)) {
+    doSomething(key);
+  }
 }
 ```
 
@@ -2044,7 +2037,7 @@ for (key in foo) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint max-classes-per-file: "error"*/
+/*eslint max-classes-per-file: 'error'*/
 
 class Foo {}
 class Bar {}
@@ -2053,7 +2046,7 @@ class Bar {}
 examples of correct code for this rule:
 
 ```javascript
-/*eslint max-classes-per-file: "error"*/
+/*eslint max-classes-per-file: 'error'*/
 
 class Foo {}
 ```
@@ -2063,29 +2056,29 @@ class Foo {}
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-alert: "error"*/
+/*eslint no-alert: 'error'*/
 
-alert("here!");
+alert('here!');
 
-confirm("Are you sure?");
+confirm('Are you sure?');
 
-prompt("What's your name?", "John Doe");
+prompt('What's your name?', 'John Doe');
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-alert: "error"*/
+/*eslint no-alert: 'error'*/
 
-customAlert("Something happened!");
+customAlert('Something happened!');
 
-customConfirm("Are you sure?");
+customConfirm('Are you sure?');
 
-customPrompt("Who are you?");
+customPrompt('Who are you?');
 
 function foo() {
-    var alert = myCustomLib.customAlert;
-    alert();
+  var alert = myCustomLib.customAlert;
+  alert();
 }
 ```
 
@@ -2094,36 +2087,36 @@ function foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-caller: "error"*/
+/*eslint no-caller: 'error'*/
 
 function foo(n) {
-    if (n <= 0) {
-        return;
-    }
+  if (n <= 0) {
+    return;
+  }
 
-    arguments.callee(n - 1);
+  arguments.callee(n - 1);
 }
 
-[1,2,3,4,5].map(function(n) {
-    return !(n > 1) ? 1 : arguments.callee(n - 1) * n;
+[1, 2, 3, 4, 5].map(function (n) {
+  return !(n > 1) ? 1 : arguments.callee(n - 1) * n;
 });
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-caller: "error"*/
+/*eslint no-caller: 'error'*/
 
 function foo(n) {
-    if (n <= 0) {
-        return;
-    }
+  if (n <= 0) {
+    return;
+  }
 
-    foo(n - 1);
+  foo(n - 1);
 }
 
-[1,2,3,4,5].map(function factorial(n) {
-    return !(n > 1) ? 1 : factorial(n - 1) * n;
+[1, 2, 3, 4, 5].map(function factorial(n) {
+  return !(n > 1) ? 1 : factorial(n - 1) * n;
 });
 ```
 
@@ -2132,43 +2125,43 @@ function foo(n) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-constructor-return: "error"*/
+/*eslint no-constructor-return: 'error'*/
 
 class A {
-    constructor(a) {
-        this.a = a;
-        return a;
-    }
+  constructor(a) {
+    this.a = a;
+    return a;
+  }
 }
 
 class B {
-    constructor(f) {
-        if (!f) {
-            return 'falsy';
-        }
+  constructor(f) {
+    if (!f) {
+      return 'falsy';
     }
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-constructor-return: "error"*/
+/*eslint no-constructor-return: 'error'*/
 
 class C {
-    constructor(c) {
-        this.c = c;
-    }
+  constructor(c) {
+    this.c = c;
+  }
 }
 
 class D {
-    constructor(f) {
-        if (!f) {
-            return;  // Flow control.
-        }
-
-        f();
+  constructor(f) {
+    if (!f) {
+      return; // Flow control.
     }
+
+    f();
+  }
 }
 ```
 
@@ -2177,99 +2170,99 @@ class D {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-else-return: "error"*/
+/*eslint no-else-return: 'error'*/
 
 function foo() {
-    if (x) {
-        return y;
-    } else {
-        return z;
-    }
+  if (x) {
+    return y;
+  } else {
+    return z;
+  }
 }
 
 function foo() {
-    if (x) {
-        return y;
-    } else if (z) {
-        return w;
-    } else {
-        return t;
-    }
-}
-
-function foo() {
-    if (x) {
-        return y;
-    } else {
-        var t = "foo";
-    }
-
+  if (x) {
+    return y;
+  } else if (z) {
+    return w;
+  } else {
     return t;
+  }
 }
 
 function foo() {
-    if (error) {
-        return 'It failed';
-    } else {
-        if (loading) {
-            return "It's still loading";
-        }
+  if (x) {
+    return y;
+  } else {
+    var t = 'foo';
+  }
+
+  return t;
+}
+
+function foo() {
+  if (error) {
+    return 'It failed';
+  } else {
+    if (loading) {
+      return 'It's still loading';
     }
+  }
 }
 
 // Two warnings for nested occurrences
 function foo() {
-    if (x) {
-        if (y) {
-            return y;
-        } else {
-            return x;
-        }
+  if (x) {
+    if (y) {
+      return y;
     } else {
-        return z;
+      return x;
     }
+  } else {
+    return z;
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-else-return: "error"*/
+/*eslint no-else-return: 'error'*/
 
 function foo() {
-    if (x) {
-        return y;
-    }
+  if (x) {
+    return y;
+  }
 
+  return z;
+}
+
+function foo() {
+  if (x) {
+    return y;
+  } else if (z) {
+    var t = 'foo';
+  } else {
+    return w;
+  }
+}
+
+function foo() {
+  if (x) {
+    if (z) {
+      return y;
+    }
+  } else {
     return z;
+  }
 }
 
 function foo() {
-    if (x) {
-        return y;
-    } else if (z) {
-        var t = "foo";
-    } else {
-        return w;
-    }
-}
-
-function foo() {
-    if (x) {
-        if (z) {
-            return y;
-        }
-    } else {
-        return z;
-    }
-}
-
-function foo() {
-    if (error) {
-        return 'It failed';
-    } else if (loading) {
-        return "It's still loading";
-    }
+  if (error) {
+    return 'It failed';
+  } else if (loading) {
+    return 'It's still loading';
+  }
 }
 ```
 
@@ -2278,27 +2271,31 @@ function foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-empty-pattern: "error"*/
+/*eslint no-empty-pattern: 'error'*/
 
 var {} = foo;
 var [] = foo;
-var {a: {}} = foo;
-var {a: []} = foo;
+var {
+  a: {},
+} = foo;
+var {
+  a: [],
+} = foo;
 function foo({}) {}
 function foo([]) {}
-function foo({a: {}}) {}
-function foo({a: []}) {}
+function foo({ a: {} }) {}
+function foo({ a: [] }) {}
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-empty-pattern: "error"*/
+/*eslint no-empty-pattern: 'error'*/
 
-var {a = {}} = foo;
-var {a = []} = foo;
-function foo({a = {}}) {}
-function foo({a = []}) {}
+var { a = {} } = foo;
+var { a = [] } = foo;
+function foo({ a = {} }) {}
+function foo({ a = [] }) {}
 ```
 
 ### no-eq-null
@@ -2306,7 +2303,7 @@ function foo({a = []}) {}
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-eq-null: "error"*/
+/*eslint no-eq-null: 'error'*/
 
 if (foo == null) {
   bar();
@@ -2320,7 +2317,7 @@ while (qux != null) {
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-eq-null: "error"*/
+/*eslint no-eq-null: 'error'*/
 
 if (foo === null) {
   bar();
@@ -2336,28 +2333,28 @@ while (qux !== null) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-eval: "error"*/
+/*eslint no-eval: 'error'*/
 
-var obj = { x: "foo" },
-    key = "x",
-    value = eval("obj." + key);
+var obj = { x: 'foo' },
+  key = 'x',
+  value = eval('obj.' + key);
 
-(0, eval)("var a = 0");
+(0, eval)('var a = 0');
 
 var foo = eval;
-foo("var a = 0");
+foo('var a = 0');
 
 // This `this` is the global object.
-this.eval("var a = 0");
+this.eval('var a = 0');
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-eval: "error"*/
+/*eslint no-eval: 'error'*/
 /*eslint-env browser*/
 
-window.eval("var a = 0");
+window.eval('var a = 0');
 ```
 
 ### no-extend-native
@@ -2365,18 +2362,18 @@ window.eval("var a = 0");
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-extend-native: "error"*/
+/*eslint no-extend-native: 'error'*/
 
-Object.prototype.a = "a";
-Object.defineProperty(Array.prototype, "times", { value: 999 });
+Object.prototype.a = 'a';
+Object.defineProperty(Array.prototype, 'times', { value: 999 });
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-extend-native: ["error", { "exceptions": ["Object"] }]*/
+/*eslint no-extend-native: ['error', { 'exceptions': ['Object'] }]*/
 
-Object.prototype.a = "a";
+Object.prototype.a = 'a';
 ```
 
 ### no-extra-bind
@@ -2384,45 +2381,45 @@ Object.prototype.a = "a";
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-extra-bind: "error"*/
+/*eslint no-extra-bind: 'error'*/
 /*eslint-env es6*/
 
 var x = function () {
-    foo();
+  foo();
 }.bind(bar);
 
 var x = (() => {
-    foo();
+  foo();
 }).bind(bar);
 
 var x = (() => {
+  this.foo();
+}).bind(bar);
+
+var x = function () {
+  (function () {
     this.foo();
-}).bind(bar);
-
-var x = function () {
-    (function () {
-      this.foo();
-    }());
+  })();
 }.bind(bar);
 
 var x = function () {
-    function foo() {
-      this.bar();
-    }
+  function foo() {
+    this.bar();
+  }
 }.bind(baz);
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-extra-bind: "error"*/
+/*eslint no-extra-bind: 'error'*/
 
 var x = function () {
-    this.foo();
+  this.foo();
 }.bind(bar);
 
 var x = function (a) {
-    return a + 1;
+  return a + 1;
 }.bind(foo, bar);
 ```
 
@@ -2431,56 +2428,56 @@ var x = function (a) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-extra-label: "error"*/
+/*eslint no-extra-label: 'error'*/
 
 A: while (a) {
-    break A;
+  break A;
 }
 
 B: for (let i = 0; i < 10; ++i) {
-    break B;
+  break B;
 }
 
 C: switch (a) {
-    case 0:
-        break C;
+  case 0:
+    break C;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-extra-label: "error"*/
+/*eslint no-extra-label: 'error'*/
 
 while (a) {
-    break;
+  break;
 }
 
 for (let i = 0; i < 10; ++i) {
-    break;
+  break;
 }
 
 switch (a) {
-    case 0:
-        break;
+  case 0:
+    break;
 }
 
 A: {
-    break A;
+  break A;
 }
 
 B: while (a) {
-    while (b) {
-        break B;
-    }
+  while (b) {
+    break B;
+  }
 }
 
 C: switch (a) {
-    case 0:
-        while (b) {
-            break C;
-        }
-        break;
+  case 0:
+    while (b) {
+      break C;
+    }
+    break;
 }
 ```
 
@@ -2489,75 +2486,75 @@ C: switch (a) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-fallthrough: "error"*/
+/*eslint no-fallthrough: 'error'*/
 
-switch(foo) {
-    case 1:
-        doSomething();
+switch (foo) {
+  case 1:
+    doSomething();
 
-    case 2:
-        doSomething();
+  case 2:
+    doSomething();
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-fallthrough: "error"*/
+/*eslint no-fallthrough: 'error'*/
 
-switch(foo) {
-    case 1:
-        doSomething();
-        break;
+switch (foo) {
+  case 1:
+    doSomething();
+    break;
 
-    case 2:
-        doSomething();
+  case 2:
+    doSomething();
 }
 
 function bar(foo) {
-    switch(foo) {
-        case 1:
-            doSomething();
-            return;
-
-        case 2:
-            doSomething();
-    }
-}
-
-switch(foo) {
+  switch (foo) {
     case 1:
-        doSomething();
-        throw new Error("Boo!");
+      doSomething();
+      return;
 
     case 2:
-        doSomething();
+      doSomething();
+  }
 }
 
-switch(foo) {
-    case 1:
-    case 2:
-        doSomething();
+switch (foo) {
+  case 1:
+    doSomething();
+    throw new Error('Boo!');
+
+  case 2:
+    doSomething();
 }
 
-switch(foo) {
-    case 1:
-        doSomething();
-        // falls through
-
-    case 2:
-        doSomething();
+switch (foo) {
+  case 1:
+  case 2:
+    doSomething();
 }
 
-switch(foo) {
-    case 1: {
-        doSomething();
-        // falls through
-    }
+switch (foo) {
+  case 1:
+    doSomething();
+  // falls through
 
-    case 2: {
-        doSomethingElse();
-    }
+  case 2:
+    doSomething();
+}
+
+switch (foo) {
+  case 1: {
+    doSomething();
+    // falls through
+  }
+
+  case 2: {
+    doSomethingElse();
+  }
 }
 ```
 
@@ -2566,17 +2563,17 @@ switch(foo) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-floating-decimal: "error"*/
+/*eslint no-floating-decimal: 'error'*/
 
-var num = .5;
-var num = 2.;
-var num = -.7;
+var num = 0.5;
+var num = 2;
+var num = -0.7;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-floating-decimal: "error"*/
+/*eslint no-floating-decimal: 'error'*/
 
 var num = 0.5;
 var num = 2.0;
@@ -2588,21 +2585,21 @@ var num = -0.7;
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-global-assign: "error"*/
+/*eslint no-global-assign: 'error'*/
 
-Object = null
-undefined = 1
+Object = null;
+undefined = 1;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-global-assign: "error"*/
+/*eslint no-global-assign: 'error'*/
 /*eslint-env browser*/
 
-window = {}
-length = 1
-top = 1
+window = {};
+length = 1;
+top = 1;
 ```
 
 ### no-implicit-coercion
@@ -2610,20 +2607,20 @@ top = 1
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-implicit-coercion: "error"*/
+/*eslint no-implicit-coercion: 'error'*/
 
 var b = !!foo;
-var b = ~foo.indexOf(".");
+var b = ~foo.indexOf('.');
 // bitwise not is incorrect only with `indexOf`/`lastIndexOf` method calling.
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-implicit-coercion: "error"*/
+/*eslint no-implicit-coercion: 'error'*/
 
 var b = Boolean(foo);
-var b = foo.indexOf(".") !== -1;
+var b = foo.indexOf('.') !== -1;
 
 var n = ~foo; // This is a just bitwise not.
 ```
@@ -2635,30 +2632,30 @@ var n = ~foo; // This is a just bitwise not.
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-implied-eval: "error"*/
+/*eslint no-implied-eval: 'error'*/
 
-setTimeout("alert('Hi!');", 100);
+setTimeout('alert('Hi!');', 100);
 
-setInterval("alert('Hi!');", 100);
+setInterval('alert('Hi!');', 100);
 
-execScript("alert('Hi!')");
+execScript('alert('Hi!')');
 
-window.setTimeout("count = 5", 10);
+window.setTimeout('count = 5', 10);
 
-window.setInterval("foo = bar", 10);
+window.setInterval('foo = bar', 10);
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-implied-eval: "error"*/
+/*eslint no-implied-eval: 'error'*/
 
-setTimeout(function() {
-    alert("Hi!");
+setTimeout(function () {
+  alert('Hi!');
 }, 100);
 
-setInterval(function() {
-    alert("Hi!");
+setInterval(function () {
+  alert('Hi!');
 }, 100);
 ```
 
@@ -2667,179 +2664,182 @@ setInterval(function() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-invalid-this: "error"*/
+/*eslint no-invalid-this: 'error'*/
 /*eslint-env es6*/
 
-"use strict";
+'use strict';
 
 this.a = 0;
 baz(() => this);
 
-(function() {
-    this.a = 0;
-    baz(() => this);
+(function () {
+  this.a = 0;
+  baz(() => this);
 })();
 
 function foo() {
-    this.a = 0;
-    baz(() => this);
+  this.a = 0;
+  baz(() => this);
 }
 
-var foo = function() {
-    this.a = 0;
-    baz(() => this);
+var foo = function () {
+  this.a = 0;
+  baz(() => this);
 };
 
-foo(function() {
-    this.a = 0;
-    baz(() => this);
+foo(function () {
+  this.a = 0;
+  baz(() => this);
 });
 
 obj.foo = () => {
-    // `this` of arrow functions is the outer scope's.
-    this.a = 0;
+  // `this` of arrow functions is the outer scope's.
+  this.a = 0;
 };
 
 var obj = {
-    aaa: function() {
-        return function foo() {
-            // There is in a method `aaa`, but `foo` is not a method.
-            this.a = 0;
-            baz(() => this);
-        };
-    }
+  aaa: function () {
+    return function foo() {
+      // There is in a method `aaa`, but `foo` is not a method.
+      this.a = 0;
+      baz(() => this);
+    };
+  },
 };
 
-foo.forEach(function() {
-    this.a = 0;
-    baz(() => this);
+foo.forEach(function () {
+  this.a = 0;
+  baz(() => this);
 });
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-invalid-this: "error"*/
+/*eslint no-invalid-this: 'error'*/
 /*eslint-env es6*/
 
-"use strict";
+'use strict';
 
 function Foo() {
-    // OK, this is in a legacy style constructor.
-    this.a = 0;
-    baz(() => this);
+  // OK, this is in a legacy style constructor.
+  this.a = 0;
+  baz(() => this);
 }
 
 class Foo {
-    constructor() {
-        // OK, this is in a constructor.
-        this.a = 0;
-        baz(() => this);
-    }
+  constructor() {
+    // OK, this is in a constructor.
+    this.a = 0;
+    baz(() => this);
+  }
 }
 
 var obj = {
-    foo: function foo() {
-        // OK, this is in a method (this function is on object literal).
-        this.a = 0;
-    }
+  foo: function foo() {
+    // OK, this is in a method (this function is on object literal).
+    this.a = 0;
+  },
 };
 
 var obj = {
-    foo() {
-        // OK, this is in a method (this function is on object literal).
-        this.a = 0;
-    }
+  foo() {
+    // OK, this is in a method (this function is on object literal).
+    this.a = 0;
+  },
 };
 
 var obj = {
-    get foo() {
-        // OK, this is in a method (this function is on object literal).
-        return this.a;
-    }
+  get foo() {
+    // OK, this is in a method (this function is on object literal).
+    return this.a;
+  },
 };
 
 var obj = Object.create(null, {
-    foo: {value: function foo() {
-        // OK, this is in a method (this function is on object literal).
-        this.a = 0;
-    }}
+  foo: {
+    value: function foo() {
+      // OK, this is in a method (this function is on object literal).
+      this.a = 0;
+    },
+  },
 });
 
-Object.defineProperty(obj, "foo", {
-    value: function foo() {
-        // OK, this is in a method (this function is on object literal).
-        this.a = 0;
-    }
+Object.defineProperty(obj, 'foo', {
+  value: function foo() {
+    // OK, this is in a method (this function is on object literal).
+    this.a = 0;
+  },
 });
 
 Object.defineProperties(obj, {
-    foo: {value: function foo() {
-        // OK, this is in a method (this function is on object literal).
-        this.a = 0;
-    }}
+  foo: {
+    value: function foo() {
+      // OK, this is in a method (this function is on object literal).
+      this.a = 0;
+    },
+  },
 });
 
 function Foo() {
-    this.foo = function foo() {
-        // OK, this is in a method (this function assigns to a property).
-        this.a = 0;
-        baz(() => this);
-    };
+  this.foo = function foo() {
+    // OK, this is in a method (this function assigns to a property).
+    this.a = 0;
+    baz(() => this);
+  };
 }
 
 obj.foo = function foo() {
-    // OK, this is in a method (this function assigns to a property).
-    this.a = 0;
+  // OK, this is in a method (this function assigns to a property).
+  this.a = 0;
 };
 
 Foo.prototype.foo = function foo() {
-    // OK, this is in a method (this function assigns to a property).
-    this.a = 0;
+  // OK, this is in a method (this function assigns to a property).
+  this.a = 0;
 };
 
 class Foo {
+  // OK, this is in a class field initializer.
+  a = this.b;
 
-    // OK, this is in a class field initializer.
-    a = this.b;
+  // OK, static initializers also have valid this.
+  static a = this.b;
 
-    // OK, static initializers also have valid this.
-    static a = this.b;
-
-    foo() {
-        // OK, this is in a method.
-        this.a = 0;
-        baz(() => this);
-    }
-
-    static foo() {
-        // OK, this is in a method (static methods also have valid this).
-        this.a = 0;
-        baz(() => this);
-    }
-
-    static {
-        // OK, static blocks also have valid this.
-        this.a = 0;
-        baz(() => this);
-    }
-}
-
-var foo = (function foo() {
-    // OK, the `bind` method of this function is called directly.
-    this.a = 0;
-}).bind(obj);
-
-foo.forEach(function() {
-    // OK, `thisArg` of `.forEach()` is given.
+  foo() {
+    // OK, this is in a method.
     this.a = 0;
     baz(() => this);
+  }
+
+  static foo() {
+    // OK, this is in a method (static methods also have valid this).
+    this.a = 0;
+    baz(() => this);
+  }
+
+  static {
+    // OK, static blocks also have valid this.
+    this.a = 0;
+    baz(() => this);
+  }
+}
+
+var foo = function foo() {
+  // OK, the `bind` method of this function is called directly.
+  this.a = 0;
+}.bind(obj);
+
+foo.forEach(function () {
+  // OK, `thisArg` of `.forEach()` is given.
+  this.a = 0;
+  baz(() => this);
 }, thisArg);
 
 /** @this Foo */
 function foo() {
-    // OK, this function has a `@this` tag in its JSDoc comment.
-    this.a = 0;
+  // OK, this function has a `@this` tag in its JSDoc comment.
+  this.a = 0;
 }
 ```
 
@@ -2848,142 +2848,142 @@ function foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-empty-function: "error"*/
+/*eslint no-empty-function: 'error'*/
 /*eslint-env es6*/
 
 function foo() {}
 
-var foo = function() {};
+var foo = function () {};
 
 var foo = () => {};
 
 function* foo() {}
 
-var foo = function*() {};
+var foo = function* () {};
 
 var obj = {
-    foo: function() {},
+  foo: function () {},
 
-    foo: function*() {},
+  foo: function* () {},
 
-    foo() {},
+  foo() {},
 
-    *foo() {},
+  *foo() {},
 
-    get foo() {},
+  get foo() {},
 
-    set foo(value) {}
+  set foo(value) {},
 };
 
 class A {
-    constructor() {}
+  constructor() {}
 
-    foo() {}
+  foo() {}
 
-    *foo() {}
+  *foo() {}
 
-    get foo() {}
+  get foo() {}
 
-    set foo(value) {}
+  set foo(value) {}
 
-    static foo() {}
+  static foo() {}
 
-    static *foo() {}
+  static *foo() {}
 
-    static get foo() {}
+  static get foo() {}
 
-    static set foo(value) {}
+  static set foo(value) {}
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-empty-function: "error"*/
+/*eslint no-empty-function: 'error'*/
 /*eslint-env es6*/
 
 function foo() {
-    // do nothing.
+  // do nothing.
 }
 
-var foo = function() {
-    // any clear comments.
+var foo = function () {
+  // any clear comments.
 };
 
 var foo = () => {
-    bar();
+  bar();
 };
 
 function* foo() {
-    // do nothing.
+  // do nothing.
 }
 
-var foo = function*() {
-    // do nothing.
+var foo = function* () {
+  // do nothing.
 };
 
 var obj = {
-    foo: function() {
-        // do nothing.
-    },
+  foo: function () {
+    // do nothing.
+  },
 
-    foo: function*() {
-        // do nothing.
-    },
+  foo: function* () {
+    // do nothing.
+  },
 
-    foo() {
-        // do nothing.
-    },
+  foo() {
+    // do nothing.
+  },
 
-    *foo() {
-        // do nothing.
-    },
+  *foo() {
+    // do nothing.
+  },
 
-    get foo() {
-        // do nothing.
-    },
+  get foo() {
+    // do nothing.
+  },
 
-    set foo(value) {
-        // do nothing.
-    }
+  set foo(value) {
+    // do nothing.
+  },
 };
 
 class A {
-    constructor() {
-        // do nothing.
-    }
+  constructor() {
+    // do nothing.
+  }
 
-    foo() {
-        // do nothing.
-    }
+  foo() {
+    // do nothing.
+  }
 
-    *foo() {
-        // do nothing.
-    }
+  *foo() {
+    // do nothing.
+  }
 
-    get foo() {
-        // do nothing.
-    }
+  get foo() {
+    // do nothing.
+  }
 
-    set foo(value) {
-        // do nothing.
-    }
+  set foo(value) {
+    // do nothing.
+  }
 
-    static foo() {
-        // do nothing.
-    }
+  static foo() {
+    // do nothing.
+  }
 
-    static *foo() {
-        // do nothing.
-    }
+  static *foo() {
+    // do nothing.
+  }
 
-    static get foo() {
-        // do nothing.
-    }
+  static get foo() {
+    // do nothing.
+  }
 
-    static set foo(value) {
-        // do nothing.
-    }
+  static set foo(value) {
+    // do nothing.
+  }
 }
 ```
 
@@ -2992,22 +2992,21 @@ class A {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-iterator: "error"*/
+/*eslint no-iterator: 'error'*/
 
-Foo.prototype.__iterator__ = function() {
-    return new FooIterator(this);
+Foo.prototype.__iterator__ = function () {
+  return new FooIterator(this);
 };
 
 foo.__iterator__ = function () {};
 
-foo["__iterator__"] = function () {};
-
+foo['__iterator__'] = function () {};
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-iterator: "error"*/
+/*eslint no-iterator: 'error'*/
 
 var __iterator__ = foo; // Not using the `__iterator__` property.
 ```
@@ -3017,86 +3016,87 @@ var __iterator__ = foo; // Not using the `__iterator__` property.
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-lone-blocks: "error"*/
+/*eslint no-lone-blocks: 'error'*/
 
-{}
+{
+}
 
 if (foo) {
-    bar();
-    {
-        baz();
-    }
+  bar();
+  {
+    baz();
+  }
 }
 
 function bar() {
-    {
-        baz();
-    }
+  {
+    baz();
+  }
 }
 
 {
-    function foo() {}
+  function foo() {}
 }
 
 {
-    aLabel: {
-    }
+  aLabel: {
+  }
 }
 
 class C {
-    static {
-        {
-            foo();
-        }
+  static {
+    {
+      foo();
     }
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-lone-blocks: "error"*/
+/*eslint no-lone-blocks: 'error'*/
 /*eslint-env es6*/
 
 while (foo) {
-    bar();
+  bar();
 }
 
 if (foo) {
-    if (bar) {
-        baz();
-    }
+  if (bar) {
+    baz();
+  }
 }
 
 function bar() {
-    baz();
+  baz();
 }
 
 {
-    let x = 1;
+  let x = 1;
 }
 
 {
-    const y = 1;
+  const y = 1;
 }
 
 {
-    class Foo {}
+  class Foo {}
 }
 
 aLabel: {
 }
 
 class C {
-    static {
-        lbl: {
-            if (something) {
-                break lbl;
-            }
+  static {
+    lbl: {
+      if (something) {
+        break lbl;
+      }
 
-            foo();
-        }
+      foo();
     }
+  }
 }
 ```
 
@@ -3105,33 +3105,39 @@ class C {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-loop-func: "error"*/
+/*eslint no-loop-func: 'error'*/
 /*eslint-env es6*/
 
-for (var i=10; i; i--) {
-    (function() { return i; })();
+for (var i = 10; i; i--) {
+  (function () {
+    return i;
+  })();
 }
 
-while(i) {
-    var a = function() { return i; };
-    a();
+while (i) {
+  var a = function () {
+    return i;
+  };
+  a();
 }
 
 do {
-    function a() { return i; };
-    a();
+  function a() {
+    return i;
+  }
+  a();
 } while (i);
 
 let foo = 0;
 for (let i = 0; i < 10; ++i) {
-    //Bad, `foo` is not in the loop-block's scope and `foo` is modified in/after the loop
-    setTimeout(() => console.log(foo));
-    foo += 1;
+  //Bad, `foo` is not in the loop-block's scope and `foo` is modified in/after the loop
+  setTimeout(() => console.log(foo));
+  foo += 1;
 }
 
 for (let i = 0; i < 10; ++i) {
-    //Bad, `foo` is not in the loop-block's scope and `foo` is modified in/after the loop
-    setTimeout(() => console.log(foo));
+  //Bad, `foo` is not in the loop-block's scope and `foo` is modified in/after the loop
+  setTimeout(() => console.log(foo));
 }
 foo = 100;
 ```
@@ -3139,29 +3145,33 @@ foo = 100;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-loop-func: "error"*/
+/*eslint no-loop-func: 'error'*/
 /*eslint-env es6*/
 
-var a = function() {};
+var a = function () {};
 
-for (var i=10; i; i--) {
-    a();
+for (var i = 10; i; i--) {
+  a();
 }
 
-for (var i=10; i; i--) {
-    var a = function() {}; // OK, no references to variables in the outer scopes.
-    a();
+for (var i = 10; i; i--) {
+  var a = function () {}; // OK, no references to variables in the outer scopes.
+  a();
 }
 
-for (let i=10; i; i--) {
-    var a = function() { return i; }; // OK, all references are referring to block scoped variables in the loop.
-    a();
+for (let i = 10; i; i--) {
+  var a = function () {
+    return i;
+  }; // OK, all references are referring to block scoped variables in the loop.
+  a();
 }
 
 var foo = 100;
-for (let i=10; i; i--) {
-    var a = function() { return foo; }; // OK, all references are referring to never modified variables.
-    a();
+for (let i = 10; i; i--) {
+  var a = function () {
+    return foo;
+  }; // OK, all references are referring to never modified variables.
+  a();
 }
 //... no modifications of foo after this loop ...
 ```
@@ -3171,16 +3181,16 @@ for (let i=10; i; i--) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-magic-numbers: "error"*/
+/*eslint no-magic-numbers: 'error'*/
 
 var dutyFreePrice = 100,
-    finalPrice = dutyFreePrice + (dutyFreePrice * 0.25);
+  finalPrice = dutyFreePrice + dutyFreePrice * 0.25;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-magic-numbers: "error"*/
+/*eslint no-magic-numbers: 'error'*/
 
 var data = ['foo', 'bar', 'baz'];
 
@@ -3192,33 +3202,35 @@ var dataLast = data[2];
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-multi-spaces: "error"*/
+/*eslint no-multi-spaces: 'error'*/
 
-var a =  1;
+var a = 1;
 
-if(foo   === "bar") {}
+if (foo === 'bar') {
+}
 
-a <<  b
+a << b;
 
-var arr = [1,  2];
+var arr = [1, 2];
 
-a ?  b: c
+a ? b : c;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-multi-spaces: "error"*/
+/*eslint no-multi-spaces: 'error'*/
 
 var a = 1;
 
-if(foo === "bar") {}
+if (foo === 'bar') {
+}
 
-a << b
+a << b;
 
 var arr = [1, 2];
 
-a ? b: c
+a ? b : c;
 ```
 
 ### no-new
@@ -3226,7 +3238,7 @@ a ? b: c
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-new: "error"*/
+/*eslint no-new: 'error'*/
 
 new Thing();
 ```
@@ -3234,7 +3246,7 @@ new Thing();
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-new: "error"*/
+/*eslint no-new: 'error'*/
 
 var thing = new Thing();
 
@@ -3246,23 +3258,23 @@ Thing();
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-new-func: "error"*/
+/*eslint no-new-func: 'error'*/
 
-var x = new Function("a", "b", "return a + b");
-var x = Function("a", "b", "return a + b");
-var x = Function.call(null, "a", "b", "return a + b");
-var x = Function.apply(null, ["a", "b", "return a + b"]);
-var x = Function.bind(null, "a", "b", "return a + b")();
-var f = Function.bind(null, "a", "b", "return a + b"); // assuming that the result of Function.bind(...) will be eventually called.
+var x = new Function('a', 'b', 'return a + b');
+var x = Function('a', 'b', 'return a + b');
+var x = Function.call(null, 'a', 'b', 'return a + b');
+var x = Function.apply(null, ['a', 'b', 'return a + b']);
+var x = Function.bind(null, 'a', 'b', 'return a + b')();
+var f = Function.bind(null, 'a', 'b', 'return a + b'); // assuming that the result of Function.bind(...) will be eventually called.
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-new-func: "error"*/
+/*eslint no-new-func: 'error'*/
 
 var x = function (a, b) {
-    return a + b;
+  return a + b;
 };
 ```
 
@@ -3271,21 +3283,21 @@ var x = function (a, b) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-new-wrappers: "error"*/
+/*eslint no-new-wrappers: 'error'*/
 
-var stringObject = new String("Hello world");
+var stringObject = new String('Hello world');
 var numberObject = new Number(33);
 var booleanObject = new Boolean(false);
 
-var stringObject = new String;
-var numberObject = new Number;
-var booleanObject = new Boolean;
+var stringObject = new String();
+var numberObject = new Number();
+var booleanObject = new Boolean();
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-new-wrappers: "error"*/
+/*eslint no-new-wrappers: 'error'*/
 
 var text = String(someValue);
 var num = Number(someValue);
@@ -3298,32 +3310,34 @@ var object = new MyString();
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-param-reassign: "error"*/
+/*eslint no-param-reassign: 'error'*/
 
 function foo(bar) {
-    bar = 13;
+  bar = 13;
 }
 
 function foo(bar) {
-    bar++;
+  bar++;
 }
 
 function foo(bar) {
-    for (bar in baz) {}
+  for (bar in baz) {
+  }
 }
 
 function foo(bar) {
-    for (bar of baz) {}
+  for (bar of baz) {
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-param-reassign: "error"*/
+/*eslint no-param-reassign: 'error'*/
 
 function foo(bar) {
-    var baz = bar;
+  var baz = bar;
 }
 ```
 
@@ -3332,21 +3346,21 @@ function foo(bar) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-proto: "error"*/
+/*eslint no-proto: 'error'*/
 
 var a = obj.__proto__;
 
-var a = obj["__proto__"];
+var a = obj['__proto__'];
 
 obj.__proto__ = b;
 
-obj["__proto__"] = b;
+obj['__proto__'] = b;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-proto: "error"*/
+/*eslint no-proto: 'error'*/
 
 var a = Object.getPrototypeOf(obj);
 
@@ -3360,44 +3374,43 @@ var c = { __proto__: a };
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-redeclare: "error"*/
+/*eslint no-redeclare: 'error'*/
 
 var a = 3;
 var a = 10;
 
 class C {
-    foo() {
-        var b = 3;
-        var b = 10;
-    }
+  foo() {
+    var b = 3;
+    var b = 10;
+  }
 
-    static {
-        var c = 3;
-        var c = 10;
-    }
+  static {
+    var c = 3;
+    var c = 10;
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-redeclare: "error"*/
+/*eslint no-redeclare: 'error'*/
 
 var a = 3;
 a = 10;
 
 class C {
-    foo() {
-        var b = 3;
-        b = 10;
-    }
+  foo() {
+    var b = 3;
+    b = 10;
+  }
 
-    static {
-        var c = 3;
-        c = 10;
-    }
+  static {
+    var c = 3;
+    c = 10;
+  }
 }
-
 ```
 
 ### no-return-assign
@@ -3405,48 +3418,48 @@ class C {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-return-assign: "error"*/
+/*eslint no-return-assign: 'error'*/
 
 function doSomething() {
-    return foo = bar + 2;
+  return (foo = bar + 2);
 }
 
 function doSomething() {
-    return foo += 2;
+  return (foo += 2);
 }
 
-const foo = (a, b) => a = b
+const foo = (a, b) => (a = b);
 
-const bar = (a, b, c) => (a = b, c == b)
+const bar = (a, b, c) => ((a = b), c == b);
 
 function doSomething() {
-    return foo = bar && foo > 0;
+  return (foo = bar && foo > 0);
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-return-assign: "error"*/
+/*eslint no-return-assign: 'error'*/
 
 function doSomething() {
-    return foo == bar + 2;
+  return foo == bar + 2;
 }
 
 function doSomething() {
-    return foo === bar + 2;
+  return foo === bar + 2;
 }
 
 function doSomething() {
-    return (foo = bar + 2);
+  return (foo = bar + 2);
 }
 
-const foo = (a, b) => (a = b)
+const foo = (a, b) => (a = b);
 
-const bar = (a, b, c) => ((a = b), c == b)
+const bar = (a, b, c) => ((a = b), c == b);
 
 function doSomething() {
-    return (foo = bar) && foo > 0;
+  return (foo = bar) && foo > 0;
 }
 ```
 
@@ -3455,38 +3468,38 @@ function doSomething() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-return-await: "error"*/
+/*eslint no-return-await: 'error'*/
 
 async function foo() {
-    return await bar();
+  return await bar();
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-return-await: "error"*/
+/*eslint no-return-await: 'error'*/
 
 async function foo() {
-    return bar();
+  return bar();
 }
 
 async function foo() {
-    await bar();
-    return;
+  await bar();
+  return;
 }
 
 // This is essentially the same as `return await bar();`, but the rule checks only `await` in `return` statements
 async function foo() {
-    const x = await bar();
-    return x;
+  const x = await bar();
+  return x;
 }
 
 // In this example the `await` is necessary to be able to catch errors thrown from `bar()`
 async function foo() {
-    try {
-        return await bar();
-    } catch (error) {}
+  try {
+    return await bar();
+  } catch (error) {}
 }
 ```
 
@@ -3495,7 +3508,7 @@ async function foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-self-assign: "error"*/
+/*eslint no-self-assign: 'error'*/
 
 foo = foo;
 
@@ -3503,7 +3516,7 @@ foo = foo;
 
 [a, ...b] = [x, ...b];
 
-({a, b} = {a, x});
+({ a, b } = { a, x });
 
 foo &&= foo;
 foo ||= foo;
@@ -3513,7 +3526,7 @@ foo ??= foo;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-self-assign: "error"*/
+/*eslint no-self-assign: 'error'*/
 
 foo = bar;
 [a, b] = [b, a];
@@ -3528,7 +3541,7 @@ let foo = foo;
 obj.a = obj.b;
 obj.a.b = obj.c.b;
 obj.a.b = obj.a.c;
-obj[a] = obj["a"];
+obj[a] = obj['a'];
 
 // This ignores if there is a function call.
 obj.a().b = obj.a().b;
@@ -3540,7 +3553,7 @@ foo |= foo;
 
 // Known limitation: this does not support computed properties except single literal or single identifier.
 obj[a + b] = obj[a + b];
-obj["a" + "b"] = obj["a" + "b"];
+obj['a' + 'b'] = obj['a' + 'b'];
 ```
 
 ### no-self-compare
@@ -3548,11 +3561,11 @@ obj["a" + "b"] = obj["a" + "b"];
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-self-compare: "error"*/
+/*eslint no-self-compare: 'error'*/
 
 var x = 10;
 if (x === x) {
-    x = 20;
+  x = 20;
 }
 ```
 
@@ -3561,10 +3574,10 @@ if (x === x) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-throw-literal: "error"*/
+/*eslint no-throw-literal: 'error'*/
 /*eslint-env es6*/
 
-throw "error";
+throw 'error';
 
 throw 0;
 
@@ -3573,30 +3586,29 @@ throw undefined;
 throw null;
 
 var err = new Error();
-throw "an " + err;
+throw 'an ' + err;
 // err is recast to a string literal
 
 var err = new Error();
-throw `${err}`
-
+throw `${err}`;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-throw-literal: "error"*/
+/*eslint no-throw-literal: 'error'*/
 
 throw new Error();
 
-throw new Error("error");
+throw new Error('error');
 
-var e = new Error("error");
+var e = new Error('error');
 throw e;
 
 try {
-    throw new Error("error");
+  throw new Error('error');
 } catch (e) {
-    throw e;
+  throw e;
 }
 ```
 
@@ -3607,7 +3619,7 @@ try {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-useless-call: "error"*/
+/*eslint no-useless-call: 'error'*/
 
 // These are same as `foo(1, 2, 3);`
 foo.call(undefined, 1, 2, 3);
@@ -3623,7 +3635,7 @@ obj.foo.apply(obj, [1, 2, 3]);
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-useless-call: "error"*/
+/*eslint no-useless-call: 'error'*/
 
 // The `this` binding is different.
 foo.call(obj, 1, 2, 3);
@@ -3645,12 +3657,12 @@ obj.foo.apply(obj, args);
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-useless-concat: "error"*/
+/*eslint no-useless-concat: 'error'*/
 /*eslint-env es6*/
 
 var a = `some` + `string`;
 
-// these are the same as "10"
+// these are the same as '10'
 var a = '1' + '0';
 var a = '1' + `0`;
 var a = `1` + '0';
@@ -3660,7 +3672,7 @@ var a = `1` + `0`;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-useless-concat: "error"*/
+/*eslint no-useless-concat: 'error'*/
 
 // when a non string is included
 var c = a + b;
@@ -3668,8 +3680,7 @@ var c = '1' + a;
 var a = 1 + '1';
 var c = 1 - 2;
 // when the string concatenation is multiline
-var c = "foo" +
-    "bar";
+var c = 'foo' + 'bar';
 ```
 
 ### no-useless-return
@@ -3677,9 +3688,11 @@ var c = "foo" +
 examples of incorrect code for this rule:
 
 ```javascript
-/* eslint no-useless-return: "error" */
+/* eslint no-useless-return: 'error' */
 
-function foo() { return; }
+function foo() {
+  return;
+}
 
 function foo() {
   doSomething();
@@ -3704,15 +3717,16 @@ function foo() {
       return;
   }
 }
-
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/* eslint no-useless-return: "error" */
+/* eslint no-useless-return: 'error' */
 
-function foo() { return 5; }
+function foo() {
+  return 5;
+}
 
 function foo() {
   return doSomething();
@@ -3743,7 +3757,6 @@ function foo() {
     return;
   }
 }
-
 ```
 
 ### no-void
@@ -3751,25 +3764,25 @@ function foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-void: "error"*/
+/*eslint no-void: 'error'*/
 
-void foo
+void foo;
 void someFunction();
 
 var foo = void bar();
 function baz() {
-    return void 0;
+  return void 0;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-void: ["error", { "allowAsStatement": true }]*/
+/*eslint no-void: ['error', { 'allowAsStatement': true }]*/
 
 var foo = void bar();
 function baz() {
-    return void 0;
+  return void 0;
 }
 ```
 
@@ -3778,20 +3791,20 @@ function baz() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-with: "error"*/
+/*eslint no-with: 'error'*/
 
 with (point) {
-    r = Math.sqrt(x * x + y * y); // is r a member of point?
+  r = Math.sqrt(x * x + y * y); // is r a member of point?
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-with: "error"*/
+/*eslint no-with: 'error'*/
 /*eslint-env es6*/
 
-const r = ({x, y}) => Math.sqrt(x * x + y * y);
+const r = ({ x, y }) => Math.sqrt(x * x + y * y);
 ```
 
 ### wrap-iife
@@ -3799,18 +3812,24 @@ const r = ({x, y}) => Math.sqrt(x * x + y * y);
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint wrap-iife: ["error", "outside"]*/
+/*eslint wrap-iife: ['error', 'outside']*/
 
-var x = function () { return { y: 1 };}(); // unwrapped
-var x = (function () { return { y: 1 };})(); // wrapped function expression
+var x = (function () {
+  return { y: 1 };
+})(); // unwrapped
+var x = (function () {
+  return { y: 1 };
+})(); // wrapped function expression
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint wrap-iife: ["error", "outside"]*/
+/*eslint wrap-iife: ['error', 'outside']*/
 
-var x = (function () { return { y: 1 };}()); // wrapped call expression
+var x = (function () {
+  return { y: 1 };
+})(); // wrapped call expression
 ```
 
 ### require-await
@@ -3818,36 +3837,36 @@ var x = (function () { return { y: 1 };}()); // wrapped call expression
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint require-await: "error"*/
+/*eslint require-await: 'error'*/
 
 async function foo() {
-    doSomething();
+  doSomething();
 }
 
 bar(async () => {
-    doSomething();
+  doSomething();
 });
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint require-await: "error"*/
+/*eslint require-await: 'error'*/
 
 async function foo() {
-    await doSomething();
+  await doSomething();
 }
 
 bar(async () => {
-    await doSomething();
+  await doSomething();
 });
 
 function foo() {
-    doSomething();
+  doSomething();
 }
 
 bar(() => {
-    doSomething();
+  doSomething();
 });
 
 // Allow empty functions.
@@ -3859,56 +3878,55 @@ async function noop() {}
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint yoda: "error"*/
+/*eslint yoda: 'error'*/
 
-if ("red" === color) {
-    // ...
+if ('red' === color) {
+  // ...
 }
 
 if (`red` === color) {
-    // ...
+  // ...
 }
 
 if (`red` === `${color}`) {
-    // ...
+  // ...
 }
 
 if (true == flag) {
-    // ...
+  // ...
 }
 
 if (5 > count) {
-    // ...
+  // ...
 }
 
 if (-1 < str.indexOf(substr)) {
-    // ...
+  // ...
 }
 
 if (0 <= x && x < 1) {
-    // ...
+  // ...
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint yoda: "error"*/
+/*eslint yoda: 'error'*/
 
 if (5 & value) {
-    // ...
+  // ...
 }
 
-if (value === "red") {
-    // ...
+if (value === 'red') {
+  // ...
 }
 
 if (value === `red`) {
-    // ...
+  // ...
 }
 
 if (`${value}` === `red`) {
-
 }
 ```
 
@@ -3919,7 +3937,7 @@ if (`${value}` === `red`) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-delete-var: "error"*/
+/*eslint no-delete-var: 'error'*/
 
 var x;
 delete x;
@@ -3930,25 +3948,25 @@ delete x;
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-shadow: "error"*/
+/*eslint no-shadow: 'error'*/
 /*eslint-env es6*/
 
 var a = 3;
 function b() {
-    var a = 10;
+  var a = 10;
 }
 
 var b = function () {
-    var a = 10;
-}
+  var a = 10;
+};
 
 function b(a) {
-    a = 10;
+  a = 10;
 }
 b(a);
 
 if (true) {
-    let a = 5;
+  let a = 5;
 }
 ```
 
@@ -3956,7 +3974,7 @@ examples of correct code for this rule:
 
 ```javascript
 {
-    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [] }]
+    'no-shadow': ['error', { 'builtinGlobals': false, 'hoist': 'functions', 'allow': [] }]
 }
 ```
 
@@ -3965,7 +3983,7 @@ examples of correct code for this rule:
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-unused-vars: "error"*/
+/*eslint no-unused-vars: 'error'*/
 /*global some_unused_var*/
 
 // It checks variables you have defined as global
@@ -3982,48 +4000,50 @@ var z = 0;
 z = z + 1;
 
 // By default, unused arguments cause warnings.
-(function(foo) {
-    return 5;
+(function (foo) {
+  return 5;
 })();
 
 // Unused recursive functions also cause warnings.
 function fact(n) {
-    if (n < 2) return 1;
-    return n * fact(n - 1);
+  if (n < 2) return 1;
+  return n * fact(n - 1);
 }
 
 // When a function definition destructures an array, unused entries from the array also cause warnings.
 function getY([x, y]) {
-    return y;
+  return y;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-unused-vars: "error"*/
+/*eslint no-unused-vars: 'error'*/
 
 var x = 10;
 alert(x);
 
 // foo is considered used here
-myFunc(function foo() {
+myFunc(
+  function foo() {
     // ...
-}.bind(this));
+  }.bind(this)
+);
 
-(function(foo) {
-    return foo;
+(function (foo) {
+  return foo;
 })();
 
 var myFunc;
-myFunc = setTimeout(function() {
-    // myFunc is considered used
-    myFunc();
+myFunc = setTimeout(function () {
+  // myFunc is considered used
+  myFunc();
 }, 50);
 
 // Only the second argument from the destructured array is used.
 function getY([, y]) {
-    return y;
+  return y;
 }
 ```
 
@@ -4032,7 +4052,7 @@ function getY([, y]) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-use-before-define: "error"*/
+/*eslint no-use-before-define: 'error'*/
 
 alert(a);
 var a = 10;
@@ -4041,45 +4061,45 @@ f();
 function f() {}
 
 function g() {
-    return b;
+  return b;
 }
 var b = 1;
 
 {
-    alert(c);
-    let c = 1;
+  alert(c);
+  let c = 1;
 }
 
 {
-    class C extends C {}
+  class C extends C {}
 }
 
 {
-    class C {
-        static x = "foo";
-        [C.x]() {}
+  class C {
+    static x = 'foo';
+    [C.x]() {}
+  }
+}
+
+{
+  const C = class {
+    static x = C;
+  };
+}
+
+{
+  const C = class {
+    static {
+      C.x = 'foo';
     }
-}
-
-{
-    const C = class {
-        static x = C;
-    }
-}
-
-{
-    const C = class {
-        static {
-            C.x = "foo";
-        }
-    }
+  };
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-use-before-define: "error"*/
+/*eslint no-use-before-define: 'error'*/
 
 var a;
 a = 10;
@@ -4090,38 +4110,38 @@ f(1);
 
 var b = 1;
 function g() {
-    return b;
+  return b;
 }
 
 {
-    let c;
-    c++;
+  let c;
+  c++;
 }
 
 {
-    class C {
-        static x = C;
+  class C {
+    static x = C;
+  }
+}
+
+{
+  const C = class C {
+    static x = C;
+  };
+}
+
+{
+  const C = class {
+    x = C;
+  };
+}
+
+{
+  const C = class C {
+    static {
+      C.x = 'foo';
     }
-}
-
-{
-    const C = class C {
-        static x = C;
-    }
-}
-
-{
-    const C = class {
-        x = C;
-    }
-}
-
-{
-    const C = class C {
-        static {
-            C.x = "foo";
-        }
-    }
+  };
 }
 ```
 
@@ -4132,39 +4152,32 @@ function g() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint array-bracket-newline: ["error", "always"]*/
+/*eslint array-bracket-newline: ['error', 'always']*/
 
 var a = [];
 var b = [1];
 var c = [1, 2];
-var d = [1,
-    2];
-var e = [function foo() {
+var d = [1, 2];
+var e = [
+  function foo() {
     dosomething();
-}];
+  },
+];
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint array-bracket-newline: ["error", "always"]*/
+/*eslint array-bracket-newline: ['error', 'always']*/
 
-var a = [
-];
-var b = [
-    1
-];
-var c = [
-    1, 2
-];
-var d = [
-    1,
-    2
-];
+var a = [];
+var b = [1];
+var c = [1, 2];
+var d = [1, 2];
 var e = [
-    function foo() {
-        dosomething();
-    }
+  function foo() {
+    dosomething();
+  },
 ];
 ```
 
@@ -4173,47 +4186,37 @@ var e = [
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint array-bracket-spacing: ["error", "never"]*/
+/*eslint array-bracket-spacing: ['error', 'never']*/
 /*eslint-env es6*/
 
-var arr = [ 'foo', 'bar' ];
-var arr = ['foo', 'bar' ];
-var arr = [ ['foo'], 'bar'];
-var arr = [[ 'foo' ], 'bar'];
-var arr = [ 'foo',
-  'bar'
-];
-var [ x, y ] = z;
-var [ x,y ] = z;
-var [ x, ...y ] = z;
-var [ ,,x, ] = z;
+var arr = ['foo', 'bar'];
+var arr = ['foo', 'bar'];
+var arr = [['foo'], 'bar'];
+var arr = [['foo'], 'bar'];
+var arr = ['foo', 'bar'];
+var [x, y] = z;
+var [x, y] = z;
+var [x, ...y] = z;
+var [, , x] = z;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint array-bracket-spacing: ["error", "never"]*/
+/*eslint array-bracket-spacing: ['error', 'never']*/
 /*eslint-env es6*/
 
 var arr = [];
 var arr = ['foo', 'bar', 'baz'];
 var arr = [['foo'], 'bar', 'baz'];
-var arr = [
-  'foo',
-  'bar',
-  'baz'
-];
-var arr = ['foo',
-  'bar'
-];
-var arr = [
-  'foo',
-  'bar'];
+var arr = ['foo', 'bar', 'baz'];
+var arr = ['foo', 'bar'];
+var arr = ['foo', 'bar'];
 
 var [x, y] = z;
-var [x,y] = z;
+var [x, y] = z;
 var [x, ...y] = z;
-var [,,x,] = z;
+var [, , x] = z;
 ```
 
 ### array-element-newline
@@ -4222,9 +4225,9 @@ examples of incorrect code for this rule:
 
 ```javascript
 {
-    "array-element-newline": ["error", {
-        "ArrayExpression": "consistent",
-        "ArrayPattern": { "minItems": 3 },
+    'array-element-newline': ['error', {
+        'ArrayExpression': 'consistent',
+        'ArrayPattern': { 'minItems': 3 },
     }]
 }
 ```
@@ -4232,21 +4235,19 @@ examples of incorrect code for this rule:
 examples of correct code for this rule:
 
 ```javascript
-/*eslint array-element-newline: ["error", "always"]*/
+/*eslint array-element-newline: ['error', 'always']*/
 
 var c = [1, 2];
 var d = [1, 2, 3];
-var e = [1, 2, 3
-];
-var f = [
-  1, 2, 3
-];
+var e = [1, 2, 3];
+var f = [1, 2, 3];
 var g = [
-    function foo() {
-        dosomething();
-    }, function bar() {
-        dosomething();
-    }
+  function foo() {
+    dosomething();
+  },
+  function bar() {
+    dosomething();
+  },
 ];
 ```
 
@@ -4255,29 +4256,42 @@ var g = [
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint block-spacing: "error"*/
+/*eslint block-spacing: 'error'*/
 
-function foo() {return true;}
-if (foo) { bar = 0;}
-function baz() {let i = 0;
-    return i;
+function foo() {
+  return true;
+}
+if (foo) {
+  bar = 0;
+}
+function baz() {
+  let i = 0;
+  return i;
 }
 
 class C {
-    static {this.bar = 0;}
+  static {
+    this.bar = 0;
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint block-spacing: "error"*/
+/*eslint block-spacing: 'error'*/
 
-function foo() { return true; }
-if (foo) { bar = 0; }
+function foo() {
+  return true;
+}
+if (foo) {
+  bar = 0;
+}
 
 class C {
-    static { this.bar = 0; }
+  static {
+    this.bar = 0;
+  }
 }
 ```
 
@@ -4286,46 +4300,39 @@ class C {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint brace-style: "error"*/
+/*eslint brace-style: 'error'*/
 
-function foo()
-{
+function foo() {
   return true;
-}
-
-if (foo)
-{
-  bar();
-}
-
-try
-{
-  somethingRisky();
-} catch(e)
-{
-  handleError();
 }
 
 if (foo) {
   bar();
 }
-else {
+
+try {
+  somethingRisky();
+} catch (e) {
+  handleError();
+}
+
+if (foo) {
+  bar();
+} else {
   baz();
 }
 
-class C
-{
-    static
-    {
-        foo();
-    }
+class C {
+  static {
+    foo();
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint brace-style: "error"*/
+/*eslint brace-style: 'error'*/
 
 function foo() {
   return true;
@@ -4343,14 +4350,14 @@ if (foo) {
 
 try {
   somethingRisky();
-} catch(e) {
+} catch (e) {
   handleError();
 }
 
 class C {
-    static {
-        foo();
-    }
+  static {
+    foo();
+  }
 }
 
 // when there are no braces, there are no problems
@@ -4363,34 +4370,34 @@ else if (baz) boom();
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint camelcase: "error"*/
+/*eslint camelcase: 'error'*/
 
-import { no_camelcased } from "external-module"
+import { no_camelcased } from 'external-module';
 
-var my_favorite_color = "#112C85";
+var my_favorite_color = '#112C85';
 
 function do_something() {
-    // ...
+  // ...
 }
 
-obj.do_something = function() {
-    // ...
+obj.do_something = function () {
+  // ...
 };
 
 function foo({ no_camelcased }) {
-    // ...
-};
+  // ...
+}
 
 function foo({ isCamelcased: no_camelcased }) {
-    // ...
+  // ...
 }
 
 function foo({ no_camelcased = 'default value' }) {
-    // ...
-};
+  // ...
+}
 
 var obj = {
-    my_pref: 1
+  my_pref: 1,
 };
 
 var { category_id = 1 } = query;
@@ -4403,14 +4410,14 @@ var { foo: bar_baz = 1 } = quz;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint camelcase: "error"*/
+/*eslint camelcase: 'error'*/
 
-import { no_camelcased as camelCased } from "external-module";
+import { no_camelcased as camelCased } from 'external-module';
 
-var myFavoriteColor   = "#112C85";
-var _myFavoriteColor  = "#112C85";
-var myFavoriteColor_  = "#112C85";
-var MY_FAVORITE_COLOR = "#112C85";
+var myFavoriteColor = '#112C85';
+var _myFavoriteColor = '#112C85';
+var myFavoriteColor_ = '#112C85';
+var MY_FAVORITE_COLOR = '#112C85';
 var foo = bar.baz_boom;
 var foo = { qux: bar.baz_boom };
 
@@ -4421,23 +4428,22 @@ new do_something();
 var { category_id: category } = query;
 
 function foo({ isCamelCased }) {
-    // ...
-};
+  // ...
+}
 
 function foo({ isCamelCased: isAlsoCamelCased }) {
-    // ...
+  // ...
 }
 
 function foo({ isCamelCased = 'default value' }) {
-    // ...
-};
+  // ...
+}
 
 var { categoryId = 1 } = query;
 
 var { foo: isCamelCased } = bar;
 
 var { foo: isCamelCased = 1 } = quz;
-
 ```
 
 ### comma-dangle
@@ -4446,14 +4452,14 @@ examples of incorrect code for this rule:
 
 ```javascript
 {
-    "comma-dangle": ["error", "never"],
+    'comma-dangle': ['error', 'never'],
     // or
-    "comma-dangle": ["error", {
-        "arrays": "never",
-        "objects": "never",
-        "imports": "never",
-        "exports": "never",
-        "functions": "never"
+    'comma-dangle': ['error', {
+        'arrays': 'never',
+        'objects': 'never',
+        'imports': 'never',
+        'exports': 'never',
+        'functions': 'never'
     }]
 }
 ```
@@ -4461,18 +4467,18 @@ examples of incorrect code for this rule:
 examples of correct code for this rule:
 
 ```javascript
-/*eslint comma-dangle: ["error", "never"]*/
+/*eslint comma-dangle: ['error', 'never']*/
 
 var foo = {
-    bar: "baz",
-    qux: "quux",
+  bar: 'baz',
+  qux: 'quux',
 };
 
-var arr = [1,2,];
+var arr = [1, 2];
 
 foo({
-  bar: "baz",
-  qux: "quux",
+  bar: 'baz',
+  qux: 'quux',
 });
 ```
 
@@ -4481,44 +4487,42 @@ foo({
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint comma-style: ["error", "last"]*/
+/*eslint comma-style: ['error', 'last']*/
 
-var foo = 1
-,
-bar = 2;
+var foo = 1,
+  bar = 2;
 
-var foo = 1
-  , bar = 2;
+var foo = 1,
+  bar = 2;
 
-var foo = ["apples"
-           , "oranges"];
+var foo = ['apples', 'oranges'];
 
 function bar() {
-    return {
-        "a": 1
-        ,"b:": 2
-    };
+  return {
+    a: 1,
+    'b:': 2,
+  };
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint comma-style: ["error", "last"]*/
-
-var foo = 1, bar = 2;
+/*eslint comma-style: ['error', 'last']*/
 
 var foo = 1,
-    bar = 2;
+  bar = 2;
 
-var foo = ["apples",
-           "oranges"];
+var foo = 1,
+  bar = 2;
+
+var foo = ['apples', 'oranges'];
 
 function bar() {
-    return {
-        "a": 1,
-        "b:": 2
-    };
+  return {
+    a: 1,
+    'b:': 2,
+  };
 }
 ```
 
@@ -4527,28 +4531,28 @@ function bar() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint computed-property-spacing: ["error", "never"]*/
+/*eslint computed-property-spacing: ['error', 'never']*/
 /*eslint-env es6*/
 
-obj[foo ]
-obj[ 'foo']
-var x = {[ b ]: a}
-obj[foo[ bar ]]
+obj[foo];
+obj['foo'];
+var x = { [b]: a };
+obj[foo[bar]];
 
-const { [ a ]: someProp } = obj;
-({ [ b ]: anotherProp } = anotherObj);
+const { [a]: someProp } = obj;
+({ [b]: anotherProp } = anotherObj);
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint computed-property-spacing: ["error", "never"]*/
+/*eslint computed-property-spacing: ['error', 'never']*/
 /*eslint-env es6*/
 
-obj[foo]
-obj['foo']
-var x = {[b]: a}
-obj[foo[bar]]
+obj[foo];
+obj['foo'];
+var x = { [b]: a };
+obj[foo[bar]];
 
 const { [a]: someProp } = obj;
 ({ [b]: anotherProp } = anotherObj);
@@ -4559,18 +4563,17 @@ const { [a]: someProp } = obj;
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint func-call-spacing: ["error", "never"]*/
+/*eslint func-call-spacing: ['error', 'never']*/
 
-fn ();
+fn();
 
-fn
-();
+fn();
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint func-call-spacing: ["error", "never"]*/
+/*eslint func-call-spacing: ['error', 'never']*/
 
 fn();
 ```
@@ -4580,35 +4583,35 @@ fn();
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint func-names: ["error", "always"]*/
+/*eslint func-names: ['error', 'always']*/
 
-Foo.prototype.bar = function() {};
+Foo.prototype.bar = function () {};
 
 const cat = {
-  meow: function() {}
-}
-
-(function() {
+  meow: function () {},
+}(
+  (function () {
     // ...
-}())
+  })()
+);
 
-export default function() {}
+export default function () {}
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint func-names: ["error", "always"]*/
+/*eslint func-names: ['error', 'always']*/
 
 Foo.prototype.bar = function bar() {};
 
 const cat = {
-  meow() {}
-}
-
-(function bar() {
+  meow() {},
+}(
+  (function bar() {
     // ...
-}())
+  })()
+);
 
 export default function foo() {}
 ```
@@ -4618,20 +4621,20 @@ export default function foo() {}
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint func-style: ["error", "expression"]*/
+/*eslint func-style: ['error', 'expression']*/
 
 function foo() {
-    // ...
+  // ...
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint func-style: ["error", "expression"]*/
+/*eslint func-style: ['error', 'expression']*/
 
-var foo = function() {
-    // ...
+var foo = function () {
+  // ...
 };
 
 var foo = () => {};
@@ -4644,49 +4647,39 @@ var foo = () => {};
 examples of incorrect code for this rule:
 
 ```javascript
-/* eslint implicit-arrow-linebreak: ["error", "beside"] */
+/* eslint implicit-arrow-linebreak: ['error', 'beside'] */
 
-(foo) =>
-  bar;
+(foo) => bar;
 
-(foo) =>
-  (bar);
+(foo) => bar;
 
-(foo) =>
-  bar =>
-    baz;
+(foo) => (bar) => baz;
 
-(foo) =>
-(
-  bar()
-);
+(foo) => bar();
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/* eslint implicit-arrow-linebreak: ["error", "beside"] */
+/* eslint implicit-arrow-linebreak: ['error', 'beside'] */
 
 (foo) => bar;
 
-(foo) => (bar);
+(foo) => bar;
 
-(foo) => bar => baz;
+(foo) => (bar) => baz;
 
-(foo) => (
-  bar()
-);
+(foo) => bar();
 
 // functions with block bodies allowed with this rule using any style
 // to enforce a consistent location for this case, see the rule: `brace-style`
 (foo) => {
   return bar();
-}
+};
 
-(foo) =>
-{
+(foo) => {
   return bar();
-}
+};
 ```
 
 ### jsx-quotes
@@ -4694,7 +4687,7 @@ examples of correct code for this rule:
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint jsx-quotes: ["error", "prefer-double"]*/
+/*eslint jsx-quotes: ['error', 'prefer-double']*/
 
 <a b='c' />
 ```
@@ -4702,10 +4695,10 @@ examples of incorrect code for this rule:
 examples of correct code for this rule:
 
 ```javascript
-/*eslint jsx-quotes: ["error", "prefer-double"]*/
+/*eslint jsx-quotes: ['error', 'prefer-double']*/
 
-<a b="c" />
-<a b='"' />
+<a b='c' />
+<a b=''' />
 ```
 
 ### key-spacing
@@ -4713,17 +4706,17 @@ examples of correct code for this rule:
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint key-spacing: ["error", { "beforeColon": false }]*/
+/*eslint key-spacing: ['error', { 'beforeColon': false }]*/
 
-var obj = { "foo" : 42 };
+var obj = { foo: 42 };
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint key-spacing: ["error", { "beforeColon": false }]*/
+/*eslint key-spacing: ['error', { 'beforeColon': false }]*/
 
-var obj = { "foo": 42 };
+var obj = { foo: 42 };
 ```
 
 ### lines-between-class-members
@@ -4731,7 +4724,7 @@ var obj = { "foo": 42 };
 examples of incorrect code for this rule:
 
 ```javascript
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint lines-between-class-members: ['error', 'always']*/
 class MyClass {
   x;
   foo() {
@@ -4746,7 +4739,7 @@ class MyClass {
 examples of correct code for this rule:
 
 ```javascript
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint lines-between-class-members: ['error', 'always']*/
 class MyClass {
   x;
 
@@ -4765,23 +4758,23 @@ class MyClass {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint linebreak-style: ["error", "unix"]*/
+/*eslint linebreak-style: ['error', 'unix']*/
 
 var a = 'a'; // \r\n
-
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint linebreak-style: ["error", "unix"]*/
+/*eslint linebreak-style: ['error', 'unix']*/
 
 var a = 'a', // \n
-    b = 'b'; // \n
+  b = 'b'; // \n
 // \n
-function foo(params) { // \n
-    // do stuff \n
-}// \n
+function foo(params) {
+  // \n
+  // do stuff \n
+} // \n
 ```
 
 ### indent
@@ -4790,9 +4783,9 @@ examples of incorrect code for this rule:
 
 ```javascript
 function hello(indentSize, type) {
-    if (indentSize === 4 && type !== 'tab') {
-        console.log('Each next indentation will increase on 4 spaces');
-    }
+  if (indentSize === 4 && type !== 'tab') {
+    console.log('Each next indentation will increase on 4 spaces');
+  }
 }
 ```
 
@@ -4800,7 +4793,7 @@ examples of correct code for this rule:
 
 ```javascript
 {
-    "indent": ["error", 2]
+    'indent': ['error', 2]
 }
 ```
 
@@ -4809,36 +4802,45 @@ examples of correct code for this rule:
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint max-depth: ["error", 4]*/
+/*eslint max-depth: ['error', 4]*/
 
 function foo() {
-    for (;;) { // Nested 1 deep
-        while (true) { // Nested 2 deep
-            if (true) { // Nested 3 deep
-                if (true) { // Nested 4 deep
-                    if (true) { // Nested 5 deep
-                    }
-                }
-            }
+  for (;;) {
+    // Nested 1 deep
+    while (true) {
+      // Nested 2 deep
+      if (true) {
+        // Nested 3 deep
+        if (true) {
+          // Nested 4 deep
+          if (true) {
+            // Nested 5 deep
+          }
         }
+      }
     }
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint max-depth: ["error", 4]*/
+/*eslint max-depth: ['error', 4]*/
 
 function foo() {
-    for (;;) { // Nested 1 deep
-        while (true) { // Nested 2 deep
-            if (true) { // Nested 3 deep
-                if (true) { // Nested 4 deep
-                }
-            }
+  for (;;) {
+    // Nested 1 deep
+    while (true) {
+      // Nested 2 deep
+      if (true) {
+        // Nested 3 deep
+        if (true) {
+          // Nested 4 deep
         }
+      }
     }
+  }
 }
 ```
 
@@ -4847,20 +4849,24 @@ function foo() {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint max-len: ["error", { "code": 80 }]*/
+/*eslint max-len: ['error', { 'code': 80 }]*/
 
-var foo = { "bar": "This is a bar.", "baz": { "qux": "This is a qux" }, "difficult": "to read" };
+var foo = {
+  bar: 'This is a bar.',
+  baz: { qux: 'This is a qux' },
+  difficult: 'to read',
+};
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint max-len: ["error", { "code": 80 }]*/
+/*eslint max-len: ['error', { 'code': 80 }]*/
 
 var foo = {
-  "bar": "This is a bar.",
-  "baz": { "qux": "This is a qux" },
-  "easier": "to read"
+  bar: 'This is a bar.',
+  baz: { qux: 'This is a qux' },
+  easier: 'to read',
 };
 ```
 
@@ -4869,7 +4875,7 @@ var foo = {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint newline-per-chained-call: ["error", { "ignoreChainWithDepth": 2 }]*/
+/*eslint newline-per-chained-call: ['error', { 'ignoreChainWithDepth': 2 }]*/
 
 _.chain({}).map(foo).filter(bar).value();
 
@@ -4877,9 +4883,7 @@ _.chain({}).map(foo).filter(bar).value();
 _.chain({}).map(foo).filter(bar);
 
 // Or
-_
-  .chain({}).map(foo)
-  .filter(bar);
+_.chain({}).map(foo).filter(bar);
 
 // Or
 obj.method().method2().method3();
@@ -4888,35 +4892,21 @@ obj.method().method2().method3();
 examples of correct code for this rule:
 
 ```javascript
-/*eslint newline-per-chained-call: ["error", { "ignoreChainWithDepth": 2 }]*/
+/*eslint newline-per-chained-call: ['error', { 'ignoreChainWithDepth': 2 }]*/
 
-_
-  .chain({})
-  .map(foo)
-  .filter(bar)
-  .value();
+_.chain({}).map(foo).filter(bar).value();
 
 // Or
-_
-  .chain({})
-  .map(foo)
-  .filter(bar);
+_.chain({}).map(foo).filter(bar);
 
 // Or
-_.chain({})
-  .map(foo)
-  .filter(bar);
+_.chain({}).map(foo).filter(bar);
 
 // Or
-obj
-  .prop
-  .method().prop;
+obj.prop.method().prop;
 
 // Or
-obj
-  .prop.method()
-  .method2()
-  .method3().prop;
+obj.prop.method().method2().method3().prop;
 ```
 
 ### no-bitwise
@@ -4924,7 +4914,7 @@ obj
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-bitwise: "error"*/
+/*eslint no-bitwise: 'error'*/
 
 var x = y | z;
 
@@ -4932,7 +4922,7 @@ var x = y & z;
 
 var x = y ^ z;
 
-var x = ~ z;
+var x = ~z;
 
 var x = y << z;
 
@@ -4956,7 +4946,7 @@ x >>>= y;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-bitwise: "error"*/
+/*eslint no-bitwise: 'error'*/
 
 var x = y || z;
 
@@ -4974,53 +4964,53 @@ x += y;
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-lonely-if: "error"*/
+/*eslint no-lonely-if: 'error'*/
 
 if (condition) {
-    // ...
+  // ...
 } else {
-    if (anotherCondition) {
-        // ...
-    }
+  if (anotherCondition) {
+    // ...
+  }
 }
 
 if (condition) {
-    // ...
+  // ...
 } else {
-    if (anotherCondition) {
-        // ...
-    } else {
-        // ...
-    }
+  if (anotherCondition) {
+    // ...
+  } else {
+    // ...
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-lonely-if: "error"*/
+/*eslint no-lonely-if: 'error'*/
 
 if (condition) {
-    // ...
+  // ...
 } else if (anotherCondition) {
-    // ...
+  // ...
 }
 
 if (condition) {
-    // ...
+  // ...
 } else if (anotherCondition) {
-    // ...
+  // ...
 } else {
-    // ...
+  // ...
 }
 
 if (condition) {
-    // ...
+  // ...
 } else {
-    if (anotherCondition) {
-        // ...
-    }
-    doSomething();
+  if (anotherCondition) {
+    // ...
+  }
+  doSomething();
 }
 ```
 
@@ -5029,31 +5019,31 @@ if (condition) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-mixed-spaces-and-tabs: "error"*/
+/*eslint no-mixed-spaces-and-tabs: 'error'*/
 
 function add(x, y) {
-// --->..return x + y;
+  // --->..return x + y;
 
-      return x + y;
+  return x + y;
 }
 
 function main() {
-// --->var x = 5,
-// --->....y = 7;
+  // --->var x = 5,
+  // --->....y = 7;
 
-    var x = 5,
-        y = 7;
+  var x = 5,
+    y = 7;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-mixed-spaces-and-tabs: "error"*/
+/*eslint no-mixed-spaces-and-tabs: 'error'*/
 
 function add(x, y) {
-// --->return x + y;
-    return x + y;
+  // --->return x + y;
+  return x + y;
 }
 ```
 
@@ -5062,45 +5052,43 @@ function add(x, y) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-multi-assign: "error"*/
+/*eslint no-multi-assign: 'error'*/
 
-var a = b = c = 5;
+var a = (b = c = 5);
 
-const foo = bar = "baz";
+const foo = (bar = 'baz');
 
-let a =
-    b =
-    c;
+let a = (b = c);
 
 class Foo {
-    a = b = 10;
+  a = (b = 10);
 }
 
-a = b = "quux";
+a = b = 'quux';
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-multi-assign: "error"*/
+/*eslint no-multi-assign: 'error'*/
 
 var a = 5;
 var b = 5;
 var c = 5;
 
-const foo = "baz";
-const bar = "baz";
+const foo = 'baz';
+const bar = 'baz';
 
 let a = c;
 let b = c;
 
 class Foo {
-    a = 10;
-    b = 10;
+  a = 10;
+  b = 10;
 }
 
-a = "quux";
-b = "quux";
+a = 'quux';
+b = 'quux';
 ```
 
 ### no-multiple-empty-lines
@@ -5108,11 +5096,9 @@ b = "quux";
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-multiple-empty-lines: "error"*/
+/*eslint no-multiple-empty-lines: 'error'*/
 
 var foo = 5;
-
-
 
 var bar = 3;
 ```
@@ -5120,10 +5106,9 @@ var bar = 3;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-multiple-empty-lines: "error"*/
+/*eslint no-multiple-empty-lines: 'error'*/
 
 var foo = 5;
-
 
 var bar = 3;
 ```
@@ -5133,49 +5118,49 @@ var bar = 3;
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-negated-condition: "error"*/
+/*eslint no-negated-condition: 'error'*/
 
 if (!a) {
-    doSomething();
+  doSomething();
 } else {
-    doSomethingElse();
+  doSomethingElse();
 }
 
 if (a != b) {
-    doSomething();
+  doSomething();
 } else {
-    doSomethingElse();
+  doSomethingElse();
 }
 
 if (a !== b) {
-    doSomething();
+  doSomething();
 } else {
-    doSomethingElse();
+  doSomethingElse();
 }
 
-!a ? c : b
+!a ? c : b;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-negated-condition: "error"*/
+/*eslint no-negated-condition: 'error'*/
 
 if (!a) {
-    doSomething();
+  doSomething();
 }
 
 if (!a) {
-    doSomething();
+  doSomething();
 } else if (b) {
-    doSomething();
+  doSomething();
 }
 
 if (a != b) {
-    doSomething();
+  doSomething();
 }
 
-a ? b : c
+a ? b : c;
 ```
 
 ### no-nested-ternary
@@ -5183,17 +5168,17 @@ a ? b : c
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-nested-ternary: "error"*/
+/*eslint no-nested-ternary: 'error'*/
 
 var thing = foo ? bar : baz === qux ? quxx : foobar;
 
-foo ? baz === qux ? quxx() : foobar() : bar();
+foo ? (baz === qux ? quxx() : foobar()) : bar();
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-nested-ternary: "error"*/
+/*eslint no-nested-ternary: 'error'*/
 
 var thing = foo ? bar : foobar;
 
@@ -5213,7 +5198,7 @@ if (foo) {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-new-object: "error"*/
+/*eslint no-new-object: 'error'*/
 
 var myObject = new Object();
 
@@ -5223,7 +5208,7 @@ new Object();
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-new-object: "error"*/
+/*eslint no-new-object: 'error'*/
 
 var myObject = new CustomObject();
 
@@ -5238,17 +5223,17 @@ new Object();
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-trailing-spaces: "error"*/
+/*eslint no-trailing-spaces: 'error'*/
 
-var foo = 0;//•••••
-var baz = 5;//••
+var foo = 0; //•••••
+var baz = 5; //••
 //•••••
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-trailing-spaces: "error"*/
+/*eslint no-trailing-spaces: 'error'*/
 
 var foo = 0;
 var baz = 5;
@@ -5259,7 +5244,7 @@ var baz = 5;
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-unneeded-ternary: "error"*/
+/*eslint no-unneeded-ternary: 'error'*/
 
 var a = x === 2 ? true : false;
 
@@ -5269,13 +5254,13 @@ var a = x ? true : false;
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-unneeded-ternary: "error"*/
+/*eslint no-unneeded-ternary: 'error'*/
 
-var a = x === 2 ? "Yes" : "No";
+var a = x === 2 ? 'Yes' : 'No';
 
 var a = x !== false;
 
-var a = x ? "Yes" : "No";
+var a = x ? 'Yes' : 'No';
 
 var a = x ? y : x;
 
@@ -5287,46 +5272,39 @@ f(x ? x : 1); // default assignment - would be disallowed if defaultAssignment o
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint no-whitespace-before-property: "error"*/
+/*eslint no-whitespace-before-property: 'error'*/
 
-foo [bar]
+foo[bar];
 
-foo. bar
+foo.bar;
 
-foo .bar
+foo.bar;
 
-foo. bar. baz
+foo.bar.baz;
 
-foo. bar()
-  .baz()
+foo.bar().baz();
 
-foo
-  .bar(). baz()
+foo.bar().baz();
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint no-whitespace-before-property: "error"*/
+/*eslint no-whitespace-before-property: 'error'*/
 
-foo.bar
+foo.bar;
 
-foo[bar]
+foo[bar];
 
-foo[ bar ]
+foo[bar];
 
-foo.bar.baz
+foo.bar.baz;
 
-foo
-  .bar().baz()
+foo.bar().baz();
 
-foo
-  .bar()
-  .baz()
+foo.bar().baz();
 
-foo.
-  bar().
-  baz()
+foo.bar().baz();
 ```
 
 ### prefer-object-spread
@@ -5334,19 +5312,19 @@ foo.
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint prefer-object-spread: "error"*/
+/*eslint prefer-object-spread: 'error'*/
 
-Object.assign({}, foo)
+Object.assign({}, foo);
 
-Object.assign({}, {foo: 'bar'})
+Object.assign({}, { foo: 'bar' });
 
-Object.assign({ foo: 'bar'}, baz)
+Object.assign({ foo: 'bar' }, baz);
 
-Object.assign({ foo: 'bar' }, Object.assign({ bar: 'foo' }))
+Object.assign({ foo: 'bar' }, Object.assign({ bar: 'foo' }));
 
-Object.assign({}, { foo, bar, baz })
+Object.assign({}, { foo, bar, baz });
 
-Object.assign({}, { ...baz })
+Object.assign({}, { ...baz });
 
 // Object.assign with a single argument that is an object literal
 Object.assign({});
@@ -5357,7 +5335,7 @@ Object.assign({ foo: bar });
 examples of correct code for this rule:
 
 ```javascript
-/*eslint prefer-object-spread: "error"*/
+/*eslint prefer-object-spread: 'error'*/
 
 Object.assign(...foo);
 
@@ -5366,7 +5344,7 @@ Object.assign(foo, { bar: baz });
 
 Object.assign(foo, Object.assign(bar));
 
-Object.assign(foo, { bar, baz })
+Object.assign(foo, { bar, baz });
 
 Object.assign(foo, { ...baz });
 ```
@@ -5376,33 +5354,33 @@ Object.assign(foo, { ...baz });
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint object-curly-spacing: ["error", "never"]*/
+/*eslint object-curly-spacing: ['error', 'never']*/
 
-var obj = { 'foo': 'bar' };
-var obj = {'foo': 'bar' };
-var obj = { baz: {'foo': 'qux'}, bar};
-var obj = {baz: { 'foo': 'qux'}, bar};
-var {x } = y;
+var obj = { foo: 'bar' };
+var obj = { foo: 'bar' };
+var obj = { baz: { foo: 'qux' }, bar };
+var obj = { baz: { foo: 'qux' }, bar };
+var { x } = y;
 import { foo } from 'bar';
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint object-curly-spacing: ["error", "never"]*/
+/*eslint object-curly-spacing: ['error', 'never']*/
 
-var obj = {'foo': 'bar'};
-var obj = {'foo': {'bar': 'baz'}, 'qux': 'quxx'};
+var obj = { foo: 'bar' };
+var obj = { foo: { bar: 'baz' }, qux: 'quxx' };
 var obj = {
-  'foo': 'bar'
+  foo: 'bar',
 };
-var obj = {'foo': 'bar'
-};
+var obj = { foo: 'bar' };
 var obj = {
-  'foo':'bar'};
+  foo: 'bar',
+};
 var obj = {};
-var {x} = y;
-import {foo} from 'bar';
+var { x } = y;
+import { foo } from 'bar';
 ```
 
 ### object-property-newline
@@ -5410,66 +5388,60 @@ import {foo} from 'bar';
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint object-property-newline: "error"*/
+/*eslint object-property-newline: 'error'*/
 
-const obj0 = { foo: "foo", bar: "bar", baz: "baz" };
+const obj0 = { foo: 'foo', bar: 'bar', baz: 'baz' };
 
 const obj1 = {
-    foo: "foo", bar: "bar", baz: "baz"
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
 };
 
 const obj2 = {
-    foo: "foo", bar: "bar",
-    baz: "baz"
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
 };
 
 const obj3 = {
-    [process.argv[3] ? "foo" : "bar"]: 0, baz: [
-        1,
-        2,
-        4,
-        8
-    ]
+  [process.argv[3] ? 'foo' : 'bar']: 0,
+  baz: [1, 2, 4, 8],
 };
 
-const a = "antidisestablishmentarianistically";
-const b = "yugoslavyalılaştırabildiklerimizdenmişsiniz";
-const obj4 = {a, b};
+const a = 'antidisestablishmentarianistically';
+const b = 'yugoslavyalılaştırabildiklerimizdenmişsiniz';
+const obj4 = { a, b };
 
 const domain = process.argv[4];
 const obj5 = {
-    foo: "foo", [
-    domain.includes(":") ? "complexdomain" : "simpledomain"
-]: true};
+  foo: 'foo',
+  [domain.includes(':') ? 'complexdomain' : 'simpledomain']: true,
+};
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint object-property-newline: "error"*/
+/*eslint object-property-newline: 'error'*/
 
 const obj1 = {
-    foo: "foo",
-    bar: "bar",
-    baz: "baz"
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
 };
 
 const obj2 = {
-    foo: "foo"
-    , bar: "bar"
-    , baz: "baz"
+  foo: 'foo',
+  bar: 'bar',
+  baz: 'baz',
 };
 
 const user = process.argv[2];
 const obj3 = {
-    user,
-    [process.argv[3] ? "foo" : "bar"]: 0,
-    baz: [
-        1,
-        2,
-        4,
-        8
-    ]
+  user,
+  [process.argv[3] ? 'foo' : 'bar']: 0,
+  baz: [1, 2, 4, 8],
 };
 ```
 
@@ -5478,108 +5450,104 @@ const obj3 = {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint one-var: ["error", "always"]*/
+/*eslint one-var: ['error', 'always']*/
 
 function foo() {
-    var bar;
-    var baz;
-    let qux;
-    let norf;
-}
-
-function foo(){
-    const bar = false;
-    const baz = true;
-    let qux;
-    let norf;
+  var bar;
+  var baz;
+  let qux;
+  let norf;
 }
 
 function foo() {
-    var bar;
+  const bar = false;
+  const baz = true;
+  let qux;
+  let norf;
+}
 
-    if (baz) {
-        var qux = true;
-    }
+function foo() {
+  var bar;
+
+  if (baz) {
+    var qux = true;
+  }
 }
 
 class C {
-    static {
-        var foo;
-        var bar;
-    }
+  static {
+    var foo;
+    var bar;
+  }
 
-    static {
-        var foo;
-        if (bar) {
-            var baz = true;
-        }
+  static {
+    var foo;
+    if (bar) {
+      var baz = true;
     }
+  }
 
-    static {
-        let foo;
-        let bar;
-    }
+  static {
+    let foo;
+    let bar;
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint one-var: ["error", "always"]*/
+/*eslint one-var: ['error', 'always']*/
 
 function foo() {
-    var bar,
-        baz;
-    let qux,
-        norf;
-}
-
-function foo(){
-    const bar = true,
-        baz = false;
-    let qux,
-        norf;
+  var bar, baz;
+  let qux, norf;
 }
 
 function foo() {
-    var bar,
-        qux;
-
-    if (baz) {
-        qux = true;
-    }
+  const bar = true,
+    baz = false;
+  let qux, norf;
 }
 
-function foo(){
-    let bar;
+function foo() {
+  var bar, qux;
 
-    if (baz) {
-        let qux;
-    }
+  if (baz) {
+    qux = true;
+  }
+}
+
+function foo() {
+  let bar;
+
+  if (baz) {
+    let qux;
+  }
 }
 
 class C {
-    static {
-        var foo, bar;
-    }
+  static {
+    var foo, bar;
+  }
 
-    static {
-        var foo, baz;
-        if (bar) {
-            baz = true;
-        }
+  static {
+    var foo, baz;
+    if (bar) {
+      baz = true;
     }
+  }
 
-    static {
-        let foo, bar;
-    }
+  static {
+    let foo, bar;
+  }
 
-    static {
-        let foo;
-        if (bar) {
-            let baz;
-        }
+  static {
+    let foo;
+    if (bar) {
+      let baz;
     }
+  }
 }
 ```
 
@@ -5588,67 +5556,47 @@ class C {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint operator-linebreak: ["error", "after"]*/
+/*eslint operator-linebreak: ['error', 'after']*/
 
-foo = 1
-+
-2;
+foo = 1 + 2;
 
-foo = 1
-    + 2;
+foo = 1 + 2;
 
-foo
-    = 5;
+foo = 5;
 
-if (someCondition
-    || otherCondition) {
+if (someCondition || otherCondition) {
 }
 
-answer = everything
-  ? 42
-  : foo;
+answer = everything ? 42 : foo;
 
 class Foo {
-    a
-        = 1;
-    [b]
-        = 2;
-    [c
-    ]
-        = 3;
+  a = 1;
+  [b] = 2;
+  [c] = 3;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint operator-linebreak: ["error", "after"]*/
+/*eslint operator-linebreak: ['error', 'after']*/
 
 foo = 1 + 2;
 
-foo = 1 +
-      2;
+foo = 1 + 2;
 
-foo =
-    5;
+foo = 5;
 
-if (someCondition ||
-    otherCondition) {
+if (someCondition || otherCondition) {
 }
 
-answer = everything ?
-  42 :
-  foo;
+answer = everything ? 42 : foo;
 
 class Foo {
-    a =
-        1;
-    [b] =
-        2;
-    [c
-    ] =
-        3;
-    d = 4;
+  a = 1;
+  [b] = 2;
+  [c] = 3;
+  d = 4;
 }
 ```
 
@@ -5657,70 +5605,58 @@ class Foo {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint padded-blocks: ["error", "always"]*/
+/*eslint padded-blocks: ['error', 'always']*/
 
 if (a) {
-    b();
-}
-
-if (a) { b(); }
-
-if (a)
-{
-    b();
+  b();
 }
 
 if (a) {
-    b();
-
+  b();
 }
 
 if (a) {
-    // comment
-    b();
+  b();
+}
 
+if (a) {
+  b();
+}
+
+if (a) {
+  // comment
+  b();
 }
 
 class C {
-    static {
-        a();
-    }
+  static {
+    a();
+  }
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint padded-blocks: ["error", "always"]*/
+/*eslint padded-blocks: ['error', 'always']*/
 
 if (a) {
-
-    b();
-
-}
-
-if (a)
-{
-
-    b();
-
+  b();
 }
 
 if (a) {
+  b();
+}
 
-    // comment
-    b();
-
+if (a) {
+  // comment
+  b();
 }
 
 class C {
-
-    static {
-
-        a();
-
-    }
-
+  static {
+    a();
+  }
 }
 ```
 
@@ -5730,14 +5666,14 @@ examples of incorrect code for this rule:
 
 ```javascript
 /*eslint padding-line-between-statements: [
-    "error",
-    { blankLine: "always", prev: "var", next: "return" }
+    'error',
+    { blankLine: 'always', prev: 'var', next: 'return' }
 ]*/
 
 function foo() {
-    var a = 1;
+  var a = 1;
 
-    return a;
+  return a;
 }
 ```
 
@@ -5745,12 +5681,12 @@ examples of correct code for this rule:
 
 ```javascript
 {
-    "padding-line-between-statements": [
-        "error",
-        { "blankLine": LINEBREAK_TYPE, "prev": STATEMENT_TYPE, "next": STATEMENT_TYPE },
-        { "blankLine": LINEBREAK_TYPE, "prev": STATEMENT_TYPE, "next": STATEMENT_TYPE },
-        { "blankLine": LINEBREAK_TYPE, "prev": STATEMENT_TYPE, "next": STATEMENT_TYPE },
-        { "blankLine": LINEBREAK_TYPE, "prev": STATEMENT_TYPE, "next": STATEMENT_TYPE },
+    'padding-line-between-statements': [
+        'error',
+        { 'blankLine': LINEBREAK_TYPE, 'prev': STATEMENT_TYPE, 'next': STATEMENT_TYPE },
+        { 'blankLine': LINEBREAK_TYPE, 'prev': STATEMENT_TYPE, 'next': STATEMENT_TYPE },
+        { 'blankLine': LINEBREAK_TYPE, 'prev': STATEMENT_TYPE, 'next': STATEMENT_TYPE },
+        { 'blankLine': LINEBREAK_TYPE, 'prev': STATEMENT_TYPE, 'next': STATEMENT_TYPE },
         ...
     ]
 }
@@ -5761,22 +5697,22 @@ examples of correct code for this rule:
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint quotes: ["error", "double"]*/
+/*eslint quotes: ['error', 'single']*/
 
-var single = 'single';
-var unescaped = 'a string containing "double" quotes';
-var backtick = `back\ntick`; // you can use \n in single or double quoted strings
+var double = "single";
+var unescaped = "a string containing 'double' quotes";
+var backtick = `back\ntick`;
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint quotes: ["error", "double"]*/
+/*eslint quotes: ['error', 'single']*/
 /*eslint-env es6*/
 
-var double = "double";
+var double = 'double';
 var backtick = `back
-tick`;  // backticks are allowed due to newline
+tick`; // backticks are allowed due to newline
 var backtick = tag`backtick`; // backticks are allowed due to tag
 ```
 
@@ -5785,32 +5721,32 @@ var backtick = tag`backtick`; // backticks are allowed due to tag
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint semi: ["error", "always"]*/
+/*eslint semi: ['error', 'always']*/
 
-var name = "ESLint"
+var name = 'ESLint';
 
-object.method = function() {
-    // ...
-}
+object.method = function () {
+  // ...
+};
 
 class Foo {
-    bar = 1
+  bar = 1;
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint semi: "error"*/
+/*eslint semi: 'error'*/
 
-var name = "ESLint";
+var name = 'ESLint';
 
-object.method = function() {
-    // ...
+object.method = function () {
+  // ...
 };
 
 class Foo {
-    bar = 1;
+  bar = 1;
 }
 ```
 
@@ -5819,51 +5755,54 @@ class Foo {
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint space-before-blocks: "error"*/
+/*eslint space-before-blocks: 'error'*/
 
-if (a){
-    b();
+if (a) {
+  b();
 }
 
-function a(){}
+function a() {}
 
-for (;;){
-    b();
+for (;;) {
+  b();
 }
 
-try {} catch(a){}
+try {
+} catch (a) {}
 
-class Foo{
-  constructor(){}
+class Foo {
+  constructor() {}
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint space-before-blocks: "error"*/
+/*eslint space-before-blocks: 'error'*/
 
 if (a) {
-    b();
+  b();
 }
 
 if (a) {
-    b();
-} else{ /*no error. this is checked by `keyword-spacing` rule.*/
-    c();
+  b();
+} else {
+  /*no error. this is checked by `keyword-spacing` rule.*/
+  c();
 }
 
 class C {
-    static{} /*no error. this is checked by `keyword-spacing` rule.*/
+  static {} /*no error. this is checked by `keyword-spacing` rule.*/
 }
 
 function a() {}
 
 for (;;) {
-    b();
+  b();
 }
 
-try {} catch(a) {}
+try {
+} catch (a) {}
 ```
 
 ### space-in-parens
@@ -5871,24 +5810,26 @@ try {} catch(a) {}
 examples of incorrect code for this rule:
 
 ```javascript
-"space-in-parens": ["error", "always"]
+'space-in-parens': ['error', 'always']
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint space-in-parens: ["error", "never"]*/
+/*eslint space-in-parens: ['error', 'never']*/
 
-foo( );
+foo();
 
-foo( 'bar');
-foo('bar' );
-foo( 'bar' );
+foo('bar');
+foo('bar');
+foo('bar');
 
-foo( /* bar */ );
+foo(/* bar */);
 
-var foo = ( 1 + 2 ) * 3;
-( function () { return 'bar'; }() );
+var foo = (1 + 2) * 3;
+(function () {
+  return 'bar';
+})();
 ```
 
 ### space-infix-ops
@@ -5896,28 +5837,28 @@ var foo = ( 1 + 2 ) * 3;
 examples of incorrect code for this rule:
 
 ```javascript
-"space-infix-ops": ["error", { "int32Hint": false }]
+'space-infix-ops': ['error', { 'int32Hint': false }]
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint space-infix-ops: "error"*/
+/*eslint space-infix-ops: 'error'*/
 /*eslint-env es6*/
 
-a+b
+a + b;
 
-a+ b
+a + b;
 
-a +b
+a + b;
 
-a?b:c
+a ? b : c;
 
-const a={b:1};
+const a = { b: 1 };
 
-var {a=0}=bar;
+var { a = 0 } = bar;
 
-function foo(a=0) { }
+function foo(a = 0) {}
 ```
 
 ### space-unary-ops
@@ -5925,13 +5866,13 @@ function foo(a=0) { }
 examples of incorrect code for this rule:
 
 ```javascript
-    "space-unary-ops": [
+    'space-unary-ops': [
         2, {
-          "words": true,
-          "nonwords": false,
-          "overrides": {
-            "new": false,
-            "++": true
+          'words': true,
+          'nonwords': false,
+          'overrides': {
+            'new': false,
+            '++': true
           }
     }]
 ```
@@ -5939,23 +5880,23 @@ examples of incorrect code for this rule:
 examples of correct code for this rule:
 
 ```javascript
-/*eslint space-unary-ops: "error"*/
+/*eslint space-unary-ops: 'error'*/
 
-typeof!foo;
+typeof !foo;
 
-void{foo:0};
+void { foo: 0 };
 
-new[foo][0];
+new [foo][0]();
 
-delete(foo.bar);
+delete foo.bar;
 
-++ foo;
+++foo;
 
-foo --;
+foo--;
 
-- foo;
+-foo;
 
-+ "3";
++'3';
 ```
 
 ### spaced-comment
@@ -5963,13 +5904,13 @@ foo --;
 examples of incorrect code for this rule:
 
 ```javascript
-"spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }]
+'spaced-comment': ['error', 'always', { 'exceptions': ['-', '+'] }]
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-"spaced-comment": ["error", "always", { "markers": ["/"] }]
+'spaced-comment': ['error', 'always', { 'markers': ['/'] }]
 ```
 
 ### wrap-regex
@@ -5977,19 +5918,19 @@ examples of correct code for this rule:
 examples of incorrect code for this rule:
 
 ```javascript
-/*eslint wrap-regex: "error"*/
+/*eslint wrap-regex: 'error'*/
 
 function a() {
-    return /foo/.test("bar");
+  return /foo/.test('bar');
 }
 ```
 
 examples of correct code for this rule:
 
 ```javascript
-/*eslint wrap-regex: "error"*/
+/*eslint wrap-regex: 'error'*/
 
 function a() {
-    return (/foo/).test("bar");
+  return /foo/.test('bar');
 }
 ```
